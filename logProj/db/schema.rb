@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326134638) do
+ActiveRecord::Schema.define(version: 20170327143835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,9 @@ ActiveRecord::Schema.define(version: 20170326134638) do
     t.integer  "item_id"
     t.integer  "user_id"
     t.integer  "given_to"
+    t.integer  "returner_id"
     t.date     "date_taken"
-    t.integer  "returned_by"
     t.date     "date_returned"
-    t.text     "checked"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["item_id"], name: "index_logs_on_item_id", using: :btree
@@ -39,9 +38,8 @@ ActiveRecord::Schema.define(version: 20170326134638) do
   create_table "users", force: :cascade do |t|
     t.string   "user_name"
     t.string   "user_email"
-    t.integer  "given_to_user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "logs", "items"

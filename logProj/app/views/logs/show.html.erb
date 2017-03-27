@@ -16,16 +16,15 @@
     <th>Date Taken</th>
     <th>Returned By</th>
     <th>Date Returned</th>
-    <th>checked</th>
+
   </tr>
-   	<th><%= @log.id %></th>
-  	<th><%= @log.item.id %></th>
-   <th><%= @log.user_id %></th>
-   <th><%= @log.given_to %></th>
+  <th><%= @log.item.id %></th>
+   <th><%= @log.item.item_model %></th>
+   <th><%= @log.user.id %><%= link_to @log.user.user_name, @log %></th>
+   <th><%= @log.given_to%></th>
    <th><%= @log.date_taken %></th>
-   <th><%= @log.returned_by %></th>
+   <th><%= @log.returner.user_name %></th>
    <th><%= @log.date_returned %></th>
-   <th><%= @log.checked %></th>
   <tr>
  
   </tr>

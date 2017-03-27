@@ -3,9 +3,7 @@
 one:
   user_name: MyString
   user_email: MyString
-  given_to_user_id: 1
 
 two:
   user_name: MyString
   user_email: MyString
-  given_to_user_id: 1
