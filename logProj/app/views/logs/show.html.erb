@@ -1,0 +1,32 @@
+<h1>Show page</h1>
+<p>views/logs/show.html.erb</p>
+
+
+<hr>
+
+
+
+<table class="table table-hover">
+
+  <tr>
+    <th>Log id</th>
+    <th>Item</th>
+    <th>Tech User</th>
+    <th>Tech Given To</th>
+    <th>Date Taken</th>
+    <th>Returned By</th>
+    <th>Date Returned</th>
+    <th>checked</th>
+  </tr>
+   	<th><%= @log.id %></th>
+  	<th><%= @log.item.id %></th>
+   <th><%= @log.user_id %></th>
+   <th><%= @log.given_to %></th>
+   <th><%= @log.date_taken %></th>
+   <th><%= @log.returned_by %></th>
+   <th><%= @log.date_returned %></th>
+   <th><%= @log.checked %></th>
+  <tr>
+ 
+  </tr>
+</table>
