@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170327143835) do
     t.integer  "given_to"
     t.integer  "returner_id"
     t.date     "date_taken"
-    t.date     "date_returned"
+    t.date     "date_returner"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["item_id"], name: "index_logs_on_item_id", using: :btree

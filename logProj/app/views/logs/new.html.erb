@@ -1,2 +1,25 @@
 <h1>New page</h1>
 <p>app/views/logs/new.html.erb</p>
+
+
+<form class="" action="<%= logs_path %>" method="POST">
+
+
+<input type="" name="log[user_id]">
+<input type="" name="log[item_id]">
+<input type="" name="log[given_to]">
+
+
+
+<input type="" name="log[returner_id]">
+
+<input type="" name="log[date_taken]">
+<input type="" name="log[date_returned_]">
+
+
+
+  <input type="submit" value="save">
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+
+</form>

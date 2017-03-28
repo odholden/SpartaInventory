@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
 
 
-   get '/logs/:id', to: 'logs#show'
-  resources :logs
+   # get '/logs/:id', to: 'logs#show'
+  resources :logs do
+  	  resources :logs, only: [:create]
+  end
 
 
   root 'welcome#index'

@@ -5,27 +5,37 @@
 <hr>
 
 
-
 <table class="table table-hover">
 
   <tr>
     <th>Log id</th>
-    <th>Item</th>
     <th>Tech User</th>
+    <th>Item</th>
+    
     <th>Tech Given To</th>
     <th>Date Taken</th>
     <th>Returned By</th>
     <th>Date Returned</th>
 
   </tr>
-  <th><%= @log.item.id %></th>
+  <th><%= @log.id %></th>
+  <th><%= @log.user.id %><%= link_to @log.user.user_name, @log %></th>
    <th><%= @log.item.item_model %></th>
-   <th><%= @log.user.id %><%= link_to @log.user.user_name, @log %></th>
    <th><%= @log.given_to%></th>
    <th><%= @log.date_taken %></th>
-   <th><%= @log.returner.user_name %></th>
+   <th><%= @log.returner.try(:user_name) %></th>
    <th><%= @log.date_returned %></th>
   <tr>
  
   </tr>
 </table>
+
+
+<hr>
+
+<!-- comment form partial to like tha picrues -->
+  <%= render "logs/form_add_log" , logs: @logs %>
+
+
+
+
