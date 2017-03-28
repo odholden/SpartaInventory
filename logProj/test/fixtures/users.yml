@@ -2,8 +2,6 @@
 
 one:
   user_name: MyString
-  user_email: MyString
 
 two:
   user_name: MyString
-  user_email: MyString

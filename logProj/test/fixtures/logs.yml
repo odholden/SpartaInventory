@@ -4,14 +4,14 @@ one:
   item: one
   user: one
   given_to: 1
-  returned_by: 1
-  date_taken: 2017-03-27
-  date_returned: 2017-03-27
+  returner_id: 1
+  date_taken: 2017-03-28
+  date_returned: 2017-03-28
 
 two:
   item: two
   user: two
   given_to: 1
-  returned_by: 1
-  date_taken: 2017-03-27
-  date_returned: 2017-03-27
+  returner_id: 1
+  date_taken: 2017-03-28
+  date_returned: 2017-03-28

@@ -1,15 +1,45 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+
+  ######### users #####
+  
+  # get 'users/index'
+
+  # get 'users/show'
+
+  # get 'users/edit'
+
+  # get 'users/update'
+
+  # get 'users/delete'
+
+  # get 'users/new'
+
+  # get 'users/create'
+
+  ######### items #####
+
+  # get 'items/index'
+
+  # get 'items/show'
+
+  # get 'items/edit'
+
+  # get 'items/update'
+
+  # get 'items/delete'
+
+  # get 'items/new'
+
+  # get 'items/create'
 
 
+	devise_for :users
 
+	resources :logs
 
-   # get '/logs/:id', to: 'logs#show'
-  resources :logs do
-  	  resources :logs, only: [:create]
-  end
+  resources :items
 
-
+  
   root 'welcome#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

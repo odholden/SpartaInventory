@@ -1,5 +1,5 @@
 class LogsController < ApplicationController
-
+before_action :authenticate_user!
 	def index
 
 		@logs = Log.all
@@ -10,7 +10,12 @@ class LogsController < ApplicationController
 
 
 	def new
+		#load all items
+		@item = Item.all
 
+		#load all users
+		@user = User.all
+	 
 
 		render :'logs/new'
 	end

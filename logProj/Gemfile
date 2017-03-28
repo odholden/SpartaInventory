@@ -5,12 +5,17 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-############## Gem for bootstrap ###############
-gem 'bootstrap', '~> 4.0.0.alpha6'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.3.3'
-end
+
+############## Gem for bootstrap 3 ###############
+gem 'bootstrap-sass', '~> 3.3.6'
+
+############## Gem for bootstrap 4 ###############
+# gem 'bootstrap', '~> 4.0.0.alpha6'
+
+# source 'https://rails-assets.org' do
+#   gem 'rails-assets-tether', '>= 1.3.3'
+# end
 
 ############## Gem for devise authentication ###############
 

@@ -2,23 +2,52 @@
 <p>app/views/logs/new.html.erb</p>
 
 
-<form class="" action="<%= logs_path %>" method="POST">
+			<%=current_user.id%>
+			
+
+   <form class="" action="<%= new_log_path %>" method="POST">
 
 
-<input type="" name="log[user_id]">
-<input type="" name="log[item_id]">
-<input type="" name="log[given_to]">
+ <table class="table table-hover">
+  <tr>
+    <th>Tech User</th>
+    <th>Item</th>
+    <th>Tech Given To</th>
+    <th>Date Taken</th>
+  </tr>
+
+  <tr>
+  	<input type="hidden" name="log[user_id]" value="<%=current_user.id%>"><%=current_user.user_name%>
+  	<th>
+
+  </th>	
+	<th>
+	<select name="log[item_id]" class="form-control">
+		 <% @item.each do |item| %>
+	  <option value="<%=item.id%>"><%= item.item_model %></option>
+	  <%end%>
+	</select>
+	</th>
+	 <th>
+	   <select name="log[given_to]"  class="form-control">
+	   <% @user.each do |user| %>
+		  <option value="<%=user.id%>"><%= user.user_name %></option>
+		  <%end%>
+		</select>
+ 	</th>
+
+	
+   <th>
+   	<input type="hidden" name="log[date_taken]" value="<%= Time.now.strftime("%Y/%m/%d") %>"><%= Time.now.strftime("%Y/%m/%d") %>
+   </th>
+
+  </tr>
+</table>
 
 
 
-<input type="" name="log[returner_id]">
 
-<input type="" name="log[date_taken]">
-<input type="" name="log[date_returned_]">
-
-
-
-  <input type="submit" value="save">
+<input type="submit" value="Add new Log">
 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
 
