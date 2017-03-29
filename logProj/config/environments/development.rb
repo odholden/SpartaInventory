@@ -4,7 +4,7 @@ Rails.application.configure do
 
   # using the configuration for the devise gem intalled manually
   # https://github.com/plataformatec/devise
- config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

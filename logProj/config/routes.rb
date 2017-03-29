@@ -1,39 +1,9 @@
 Rails.application.routes.draw do
 
-  ######### users #####
-  
-  # get 'users/index'
 
-  # get 'users/show'
+  devise_for :users
 
-  # get 'users/edit'
-
-  # get 'users/update'
-
-  # get 'users/delete'
-
-  # get 'users/new'
-
-  # get 'users/create'
-
-  ######### items #####
-
-  # get 'items/index'
-
-  # get 'items/show'
-
-  # get 'items/edit'
-
-  # get 'items/update'
-
-  # get 'items/delete'
-
-  # get 'items/new'
-
-  # get 'items/create'
-
-
-	devise_for :users
+  resources :users
 
 	resources :logs
 

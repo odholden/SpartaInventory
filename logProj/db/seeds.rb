@@ -64,6 +64,15 @@
 
 
 
+
+
+# class User < ApplicationRecord
+
+# 	belongs_to :returner, :class_name => 'User'
+
+#  end
+
+
 # class Log < ApplicationRecord
 #   belongs_to :item
 #   belongs_to :user

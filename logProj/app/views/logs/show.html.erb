@@ -3,7 +3,8 @@
 
 
 <hr>
-
+<h1>You are returning the item</h1>
+<hr>
 
 <table class="table table-hover">
 
@@ -19,11 +20,11 @@
 
   </tr>
   <th><%= @log.id %></th>
-  <th><%= @log.user.id %><%= link_to @log.user.user_name, @log %></th>
+  <th><%= @log.user.id %><%= link_to @log.user.email, @log %></th>
    <th><%= @log.item.item_model %></th>
    <th><%= @log.given_to%></th>
    <th><%= @log.date_taken %></th>
-   <th><%= @log.returner.try(:user_name) %></th>
+   <th><%= @log.returner_id %></th>
    <th><%= @log.date_returned %></th>
   <tr>
  
@@ -32,6 +33,7 @@
 
 
 <hr>
+
 
 <!-- comment form partial to like tha picrues -->
   <%= render "logs/form_add_log" , logs: @logs %>

@@ -34,8 +34,20 @@ before_action :authenticate_user!
 	    render :'logs/show'
   	end
 
+  	def update
+		#update the logs using the log id
+  		@log = Log.find params[:id] 
+
+  		#update the logs with the retuner
+  		 @log.update_attributes(update_log_params)
+
+
+
+  		redirect_to :logs
+  	end
+
 	def create
-		 log = Log.create(log_params)
+		 log = Log.create(create_log_params)
 
 		 log.save
 
@@ -43,11 +55,19 @@ before_action :authenticate_user!
 	end
 
 private
-	def log_params
+	#create a new record
+	def create_log_params
 		params.require(:log).permit(:item_id, :user_id, :given_to,:date_taken, :returner_id )
 	end
+
+	#update a record
+	def update_log_params
+    params[:log].permit(:returner_id ,:date_returned)
+  end
+
 end
 
+# <%= @log.returner_id.try(:email) %>
 
 
 # <input type="" name="log[user_id]">

@@ -1,44 +1,35 @@
-   <form class="" action="<%= logs_path %>" method="POST">
+   <h1>Please confirm the details for returning </h1>
+<hr>
+
+
+
+<h1><%=current_user.id %></h1>  
+<h1><%=current_user.email %></h1>
+
+   <form action="<%= log_path %>" method="POST" enctype="multipart/form-data">
+    <input name="_method" type="hidden" value="PATCH" />
 
 
  <table class="table table-hover">
   <tr>
-    <th>Tech User</th>
-    <th>Item</th>
-    <th>Tech Given To</th>
-    <th>Date Taken</th>
+    <th>Returned By</th>
+    <th>Date Returned</th>
   </tr>
 
   <tr>
-  	<input type="hidden" name="log[user_id]" value="<%= @log.user.id %>"><th><%= @log.user.user_name %>
+  	<input type="hidden" name="log[returner_id]" value="<%=current_user.id %>"><th><%=current_user.email%>
   </th>	
-	<th>
-	<select name="log[item_id]" class="form-control">
-		 <% @item.each do |item| %>
-	  <option value="<%=item.id%>"><%= item.item_model %></option>
-	  <%end%>
-	</select>
-	</th>
-	 <th>
-	   <select name="log[given_to]"  class="form-control">
-	   <% @user.each do |user| %>
-		  <option value="<%=user.id%>"><%= user.user_name %></option>
-		  <%end%>
-		</select>
- 	</th>
 
 	
    <th>
-   	<input type="hidden" name="log[date_taken]" value="<%= Time.now.strftime("%Y/%m/%d") %>"><%= Time.now.strftime("%Y/%m/%d") %>
+   	<input type="hidden" name="log[date_returned]" value="<%= Time.now.strftime("%Y/%m/%d") %>"><%= Time.now.strftime("%Y/%m/%d") %>
    </th>
 
   </tr>
 </table>
 
 
-
-
-<input type="submit" value="save">
+<input type="submit" value="Submit">
 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
 
