@@ -47,17 +47,20 @@ before_action :authenticate_user!
   	end
 
 	def create
-		 log = Log.create(create_log_params)
 
-		 log.save
+		 log = Log.new(create_log_params)
 
-    	redirect_to :logs
+		 if !log.save
+		 	puts log.errors.full_messages
+		 else
+    		redirect_to :logs
+		 end
 	end
 
 private
 	#create a new record
 	def create_log_params
-		params.require(:log).permit(:item_id, :user_id, :given_to,:date_taken, :returner_id )
+		params.require(:log).permit(:item_id, :user_id, :given_to, :date_taken )
 	end
 
 	#update a record
@@ -66,6 +69,20 @@ private
   end
 
 end
+
+
+
+# <select name="log[item_id]" class="form-control">
+#   		 <% @item.each do |item| %>
+#   	  <option value="<%=item.id%>"><%= item.item_model %></option>
+#   	  <%end%>
+#   	</select>
+
+ # <select name="log[given_to]"  class="form-control">
+	#    <% @user.each do |user| %>
+	# 	  <option value="<%=user.id%>"><%= user.email %></option>
+	# 	  <%end%>
+	# 	</select>
 
 # <%= @log.returner_id.try(:email) %>
 

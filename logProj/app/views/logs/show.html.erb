@@ -2,6 +2,7 @@
 <p>views/logs/show.html.erb</p>
 
 
+ 
 <hr>
 <h1>You are returning the item</h1>
 <hr>
@@ -22,9 +23,9 @@
   <th><%= @log.id %></th>
   <th><%= @log.user.id %><%= link_to @log.user.email, @log %></th>
    <th><%= @log.item.item_model %></th>
-   <th><%= @log.given_to%></th>
+   <th><%= @log.given_to %></th>
    <th><%= @log.date_taken %></th>
-   <th><%= @log.returner_id %></th>
+   <th><%= @log.returner.email %></th>
    <th><%= @log.date_returned %></th>
   <tr>
  
@@ -37,6 +38,9 @@
 
 <!-- comment form partial to like tha picrues -->
   <%= render "logs/form_add_log" , logs: @logs %>
+
+
+  
 
 
 

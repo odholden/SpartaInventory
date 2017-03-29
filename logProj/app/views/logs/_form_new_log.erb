@@ -10,7 +10,7 @@
   </tr>
 
   <tr>
-  	<input type="hidden" name="log[user_id]" value="<%= @log.user.id %>"><th><%= @log.user.user_name %>
+  	<input type="hidden" name="log[user_id]" value="<%=current_user.id%>"><%=current_user.email%>
   </th>	
 	<th>
 	<select name="log[item_id]" class="form-control">
@@ -22,7 +22,7 @@
 	 <th>
 	   <select name="log[given_to]"  class="form-control">
 	   <% @user.each do |user| %>
-		  <option value="<%=user.id%>"><%= user.user_name %></option>
+		  <option value="<%=user.id%>"><%= user.id %></option>
 		  <%end%>
 		</select>
  	</th>
@@ -34,7 +34,6 @@
 
   </tr>
 </table>
-
 
 
 

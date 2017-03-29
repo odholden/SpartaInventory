@@ -2,6 +2,7 @@
 <h1>Logs index</h1>
 <p>Find me in app/views/logs/index.html.erb</p>
 
+
 <hr>
 
 <a class="btn btn-primary" href="/logs/new" role="button">Add New Log </a>
@@ -34,7 +35,7 @@
   <th><%= log.item.item_model %></th>   
    <th><%= log.given_to %></th>
    <th><%= log.date_taken %></th>
-   <th><%= log.returner_id %></th>
+   <th><%= log.returner.try(:email)%></th>
    <th><%= log.date_returned %></th>
 
   </tr>
