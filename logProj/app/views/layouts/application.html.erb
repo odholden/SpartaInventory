@@ -31,7 +31,18 @@
       <!-- <li><a href="#">sample</a></li> -->
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/users/sign_in"><span class="glyphicon glyphicon-user"></span><%=current_user.try(:email) %></a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="/users/sign_in">
+          <span class="glyphicon glyphicon-user"></span>
+          <%=current_user.try(:email) %>
+          <span class="caret"></span>
+        </a>
+          <ul class="dropdown-menu">
+            <li><a href="/users/edit">My profile</a></li>
+          </ul>
+      </li>
+
+        </li>
       <li><a href="/users/sign_up"><span class="glyphicon glyphicon-log-in"></span>Sign Up</a></li>
       <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
     </ul>
