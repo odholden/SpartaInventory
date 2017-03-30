@@ -1,0 +1,39 @@
+<section class="text-center">
+<h1>Return an item </h1>
+<h3>Click on the item's serial number you want to return</h3>
+
+
+<table class="table table-hover">
+ <thead>
+  <tr>
+    <th>Log id</th>
+    <th>Tech User email</th>
+    <th>Item</th>
+    <th>Serial number</th>
+    <th>Tech Given To</th>
+    <th>Date Taken</th>
+    <th>Returned By</th>
+    <th>Date Returned</th>
+    <th>Additional notes</th>
+  </thead>
+
+  </tr>
+  <% @logs.each do |log| %>
+  <tr>
+  <th><%= log.id %></th>
+  <th><%= log.user.email%></th>
+  <th><%= log.item.item_model %></th>   
+  <th><%= link_to log.item.item_serial_number, log %></th>   
+   <th><%= log.given_to %></th>
+   <th><%= log.date_taken %></th>
+   <th><%= log.returner.try(:email)%></th>
+   <th><%= log.date_returned %></th>
+   <th><%= log.notes %></th>
+
+
+  </tr>
+
+   <%end%>
+</table>
+
+

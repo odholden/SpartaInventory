@@ -20,3 +20,55 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+html, body {
+
+	background-color:rgb(46,55,60);
+	color: #C0C2C6;
+	margin-bottom: 1%;
+
+
+}
+.table-hover{
+  background-color: rgba(0, 0, 0, 0.34);
+
+}
+
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: rgba(51, 51, 51, 1);
+}
+
+textarea{
+	color: #2D2E2F;
+}
+
+
+.bigBtn {
+	width: 150px;
+	height: 150px;
+	padding-top: 50px;
+	font-size: 20px;
+}
+
+.largeBtn {
+	width: 200px;
+	height: 60px;
+	padding-top: 10px;
+	font-size: 18px;
+	margin: 10px;
+}
+
+
+.table {
+	width: 90%;
+	margin: auto;
+}
+
+
+.formItem{
+	width: 250px;
+	margin: auto;
+
+}

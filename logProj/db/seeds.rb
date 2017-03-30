@@ -106,14 +106,10 @@
 
 # rails g model user user_name:string user_email:string
 
-# rails g model item item_model:string item_serial_number:string
+# rails g model item item_model:string item_serial_number:string loan:boolean
+# rails generate migration add_loan_to_items loan:boolean
 
-# rails g model log item:references user:references given_to:integer returned_by:integer date_taken:date  date_returned:date
-
-# rails g model log item:references user:references given_to:user returned_by:user date_taken:date  date_returned:date
-  
-
-# rails g model log item:references user:references given_to:integer returner_id:integer  date_taken:date date_returned:date
+# rails g model log item:references user:references given_to:text returner_id:integer  date_taken:date date_returned:date notes:text
 
 
  # add_column :log, :given_to:references 
@@ -130,8 +126,8 @@
 # user2 = User.create({user_name:'Anna'})
 # user3 = User.create({user_name:'Jhon'})
 
-# item = Item.create({item_model:'Macbook 2016', item_serial_number:'MJKUY3TGVS0P'}) 
-# item2 = Item.create({item_model:'Macbook 2015', item_serial_number:'NGHJUY90KLYD'}) 
+ item = Item.create({item_model:'Macbook 2016', item_serial_number:'MJKUY3TGVS0P'}) 
+ item2 = Item.create({item_model:'Macbook 2015', item_serial_number:'NGHJUY90KLYD'}) 
 
 # log = Log.create({item_id:item.id, user_id:user.id, given_to:user.id, returner_id:user2.id, date_taken:'01/03/2017', date_returned:'11/03/2017' })
 # log2 = Log.create({item_id:item2.id, user_id:user2.id, given_to:user.id , returner_id:user.id, date_taken:'01/03/2017', date_returned:'11/03/2017' })

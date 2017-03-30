@@ -1,20 +1,37 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
 
-<a class="btn btn-primary" href="/items/" role="button">See all Items </a>
+<div class="text-center">
+  <h1>Items#show</h1>
+  <p>Find me in app/views/items/show.html.erb</p>
+
+  <a class="btn btn-success largeBtn" href="/items/" role="button">Items </a>
 
 
-<table class="table table-hover">
+  <table class="table table-hover">
+   <thead>
+    <tr>
+      <th>Item id</th>
+      <th>Item model</th>
+      <th>Item serial number</th>
+    </tr>
+    </thead>
+    <tr>
+    <th><%= @item.id %></th>
+    <th><%= @item.item_model %></th>   
+    <th><%= @item.item_serial_number %></th>
 
-  <tr>
-    <th>Item id</th>
-    <th>Item model</th>
-    <th>Item serial number</th>
-  </tr>
-  <tr>
-  <th><%= @item.id %></th>
-  <th><%= @item.item_model %></th>   
-  <th><%= @item.item_serial_number %></th>
+    </tr>
+  </table>
+</div>
 
-  </tr>
-</table>
+
+<hr>
+
+<h5>Testing area</h5>
+
+<%if @item.loan?%>
+  <p><%= @item.loan%></p> 
+  <p><%= @item.item_model %></p>
+  <p><%= @item.item_serial_number %></p>
+<%end%>
+
+

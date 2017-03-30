@@ -1,2 +1,39 @@
-<h1>Items#edit</h1>
-<p>Find me in app/views/items/edit.html.erb</p>
+<div class="text-center">
+  <h1>Edit item form for item</h1>
+  <h4>&ldquo;<%= @item.item_model %>&rdquo; - &ldquo;<%= @item.item_serial_number %>&rdquo;</h4>
+
+  <a class="btn btn-success largeBtn" href="/items/" role="button">Items </a>
+
+
+   <form class="" action="<%= item_path %>" method="POST">
+   <input type="hidden" name="_method" value="PATCH">
+     <table class="table table-hover">
+     <thead>
+        <tr>
+          <th>Item id</th>
+          <th>Item model</th>
+          <th>Serial number</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr>
+      <th><%= @item.id %></th>
+      <th>
+        <input type="" name="item[item_model]" class="form-control" placeholder="<%= @item.item_model %>" required autofocus> 
+      </th>   
+      <th>
+        <input type="" name="item[item_serial_number]" class="form-control" placeholder="<%= @item.item_serial_number %>" required autofocus>   
+      </th>
+      <th>
+        <input type="submit" class="btn btn-success" value="save">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      </th>
+    </tr>
+  </table>
+</form>
+</div>
+
+
+
+
+

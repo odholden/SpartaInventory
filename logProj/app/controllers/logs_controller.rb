@@ -2,10 +2,14 @@ class LogsController < ApplicationController
 before_action :authenticate_user!
 	def index
 
+		render :'logs/index'
+	end
+
+	def list
+
 		@logs = Log.all
 
-
-		render :'logs/index'
+		render :'logs/list'
 	end
 
 
@@ -15,7 +19,7 @@ before_action :authenticate_user!
 
 		#load all users
 		@user = User.all
-	 
+
 
 		render :'logs/new'
 	end
@@ -41,6 +45,10 @@ before_action :authenticate_user!
   		#update the logs with the retuner
   		 @log.update_attributes(update_log_params)
 
+  		#update the item setting to true
+  		 @log.item[:loan] = true
+  		 @log.item.save
+
 
 
   		redirect_to :logs
@@ -50,24 +58,27 @@ before_action :authenticate_user!
 
 		 log = Log.new(create_log_params)
 
+		 log.item[:loan] = false
+
 		 if !log.save
 		 	puts log.errors.full_messages
 		 else
+		 	log.item.save
     		redirect_to :logs
 		 end
+
 	end
 
 private
-	#create a new record
+	#create a new record in log table
 	def create_log_params
 		params.require(:log).permit(:item_id, :user_id, :given_to, :date_taken )
 	end
 
-	#update a record
+	#update a record in log table
 	def update_log_params
-    params[:log].permit(:returner_id ,:date_returned)
-  end
-
+    	params[:log].permit(:returner_id ,:date_returned, :notes)
+ 	end
 end
 
 
@@ -128,5 +139,18 @@ end
 
 #   </tr>
 # </table>
+
+
+
+
+
+# <hr>
+
+# <h3>Testing area...</h3>
+
+
+# <% if @item.loan ? %>
+# <%=@item.id%>
+# <%end%> 
 
 

@@ -3,15 +3,17 @@
 one:
   item: one
   user: one
-  given_to: 1
+  given_to: MyText
   returner_id: 1
-  date_taken: 2017-03-28
-  date_returned: 2017-03-28
+  date_taken: 2017-03-29
+  date_returned: 2017-03-29
+  notes: MyText
 
 two:
   item: two
   user: two
-  given_to: 1
+  given_to: MyText
   returner_id: 1
-  date_taken: 2017-03-28
-  date_returned: 2017-03-28
+  date_taken: 2017-03-29
+  date_returned: 2017-03-29
+  notes: MyText

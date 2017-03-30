@@ -1,31 +1,26 @@
-<h1>Show page</h1>
-<p>views/logs/show.html.erb</p>
+<h1 class="text-center">You are returning an item with the serial number</h1>
+<h3 class="text-center"><em>&ldquo;<%=@log.item.item_serial_number%>&rdquo;</em></h3>
 
-
- 
-<hr>
-<h1>You are returning the item</h1>
-<hr>
 
 <table class="table table-hover">
-
+  <thead>
   <tr>
     <th>Log id</th>
     <th>Tech User</th>
     <th>Item</th>
-    
     <th>Tech Given To</th>
     <th>Date Taken</th>
     <th>Returned By</th>
     <th>Date Returned</th>
-
   </tr>
+  </thead>
+
   <th><%= @log.id %></th>
-  <th><%= @log.user.id %><%= link_to @log.user.email, @log %></th>
+  <th><%= link_to @log.user.email, @log %></th>
    <th><%= @log.item.item_model %></th>
    <th><%= @log.given_to %></th>
    <th><%= @log.date_taken %></th>
-   <th><%= @log.returner.email %></th>
+   <th><%= @log.returner.try(:email) %></th>
    <th><%= @log.date_returned %></th>
   <tr>
  
@@ -33,11 +28,10 @@
 </table>
 
 
-<hr>
 
 
 <!-- comment form partial to like tha picrues -->
-  <%= render "logs/form_add_log" , logs: @logs %>
+  <%= render "logs/form_return_item" , logs: @logs %>
 
 
   

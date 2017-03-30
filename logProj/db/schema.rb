@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328223241) do
+ActiveRecord::Schema.define(version: 20170330115758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,17 +18,19 @@ ActiveRecord::Schema.define(version: 20170328223241) do
   create_table "items", force: :cascade do |t|
     t.string   "item_model"
     t.string   "item_serial_number"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "loan",               default: true
   end
 
   create_table "logs", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "user_id"
-    t.integer  "given_to"
+    t.text     "given_to"
     t.integer  "returner_id"
     t.date     "date_taken"
     t.date     "date_returned"
+    t.text     "notes"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["item_id"], name: "index_logs_on_item_id", using: :btree

@@ -1,25 +1,26 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
 
+  <div class="text-center"> 
+      <h1>Add a new item</h1>
 
-<a class="btn btn-primary" href="/items/new" role="button">Add new Item </a>
+    <a class="btn btn-success largeBtn" href="/items/new" role="button">Add new Item </a>
 
-<table class="table table-hover">
-
-  <tr>
-    <th>Item id</th>
-    <th>Item model</th>
-    <th>Item serial number</th>
-
-
-  </tr>
-  <% @items.each do |item| %>
-  <tr>
-  <th><%= item.id %></th>
-  <th><%= item.item_model %></th>   
-  <th><%= item.item_serial_number %></th>
-
-  </tr>
-
-   <%end%>
-</table>
+    <table class="table table-hover">
+       <thead>
+          <tr>
+            <th>Item id</th>
+            <th>Item model</th>
+            <th>Item serial number</th>
+            <th></th>
+          </tr>
+       </thead>
+      <% @items.each do |item| %>
+      <tr>
+        <th><%= item.id %></th>
+        <th><%= item.item_model %></th>   
+        <th><%= link_to item.item_serial_number, item %></th>   
+        <th> <a href="/edit/<%= item.id %>">Edit</a></th>
+       
+      </tr>
+       <%end%>
+    </table>
+</div>

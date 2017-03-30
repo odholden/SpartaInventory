@@ -1,46 +1,19 @@
 <section class="text-center">
 <h1>Logs index</h1>
-<p>Find me in app/views/logs/index.html.erb</p>
+
 
 
 <hr>
 
-<a class="btn btn-primary" href="/logs/new" role="button">Add New Log </a>
-<a class="btn btn-success" href="/items/new" role="button">Add New Item</a>
+<a class="btn btn-primary bigBtn" href="/logs/new" role="button">New Log </a>
+<a class="btn btn-success bigBtn" href="/items/" role="button">Items</a>
+<a class="btn btn-info bigBtn" href="/logs/list" role="button">Logs</a>
+<a class="btn btn-warning bigBtn" href="/logs/list" role="button">Return item</a>
 
-<h2>All item logs</h2>
 </section>
 
 <br />
 <hr>
 
-<table class="table table-hover">
-
-  <tr>
-    <th>Log id</th>
-      <th>Tech User ID</th>
-    <th>Tech User</th>
-    <th>Item</th>
-    <th>Tech Given To</th>
-    <th>Date Taken</th>
-    <th>Returned By</th>
-    <th>Date Returned</th>
-
-  </tr>
-  <% @logs.each do |log| %>
-  <tr>
-  <th><%= log.id %></th>
-  <th><%= log.user.id %></th>
-  <th><%= link_to log.user.email, log %></th>
-  <th><%= log.item.item_model %></th>   
-   <th><%= log.given_to %></th>
-   <th><%= log.date_taken %></th>
-   <th><%= log.returner.try(:email)%></th>
-   <th><%= log.date_returned %></th>
-
-  </tr>
-
-   <%end%>
-</table>
 
 

@@ -17,9 +17,22 @@ class ItemsController < ApplicationController
   end
 
   def edit
+      #load all items
+     @item = Item.find params[:id]
+
   end
 
   def update
+     
+      item = Item.find params[:id]
+   
+    if item.update(item_params)
+      redirect_to item
+    else
+      render 'edit'
+  end
+    
+
   end
 
   def delete
