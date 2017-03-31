@@ -1,7 +1,7 @@
 
 <div class="text-center">
-  <h1>Items#show</h1>
-  <p>Find me in app/views/items/show.html.erb</p>
+  <h1>Item details </h1>
+
 
   <a class="btn btn-success largeBtn" href="/items/" role="button">Items </a>
 
@@ -22,16 +22,3 @@
     </tr>
   </table>
 </div>
-
-
-<hr>
-
-<h5>Testing area</h5>
-
-<%if @item.loan?%>
-  <p><%= @item.loan%></p> 
-  <p><%= @item.item_model %></p>
-  <p><%= @item.item_serial_number %></p>
-<%end%>
-
-
