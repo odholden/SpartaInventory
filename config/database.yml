@@ -24,6 +24,10 @@ default: &default
 development:
   <<: *default
   database: logProj_development
+  username: postgres
+  password: password
+  host: 192.168.10.150
+  # url: 'postgres://postgres:password@192.168.10.150/logProj_development'
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
