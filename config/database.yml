@@ -13,7 +13,6 @@
 #
 # Configure Using Gemfile
 # gem 'pg'
-#
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -24,10 +23,13 @@ default: &default
 development:
   <<: *default
   database: logProj_development
-  username: postgres
-  password: password
+  adapter: postgresql
   host: 192.168.10.150
-  # url: 'postgres://postgres:password@192.168.10.150/logProj_development'
+  username: postgres
+  password: 'xyv'
+  default: &default
+  encoding: unicode
+  pool: 5
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -45,7 +47,7 @@ development:
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  # port: 5432
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -80,10 +82,10 @@ test:
 # You can use this database configuration with:
 #
 #   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+    # url: <%= ENV['DATABASE_URL'] %>
 #
 production:
   <<: *default
   database: logProj_production
-  username: logProj
+  username: vagrant
   password: <%= ENV['LOGPROJ_DATABASE_PASSWORD'] %>
