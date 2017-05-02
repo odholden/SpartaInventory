@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  item_model: MyString
-  item_serial_number: MyString
-
-two:
-  item_model: MyString
-  item_serial_number: MyString
