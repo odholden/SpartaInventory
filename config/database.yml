@@ -87,6 +87,7 @@ test:
 production:
   <<: *default
   database: logProj_production
+  adapter: postgresql
   username: postgres
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   host: <%= ENV['HOST_URL'] %>
