@@ -102,8 +102,8 @@ test:
     database: logProj_production
     adapter: postgresql
     username: postgres
-    password: <%= password %>
-    host: <%= inventory.cb5noheu2j02.eu-west-1.rds.amazonaws.com %>
+    password: <%= 'password' %>
+    host: <%= 'inventory.cb5noheu2j02.eu-west-1.rds.amazonaws.com' %>
     default: &default
     encoding: unicode
     pool: 5
