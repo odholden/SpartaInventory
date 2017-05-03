@@ -87,5 +87,17 @@ test:
 production:
   <<: *default
   database: logProj_production
-  username: vagrant
-  password: <%= ENV['LOGPROJ_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  host: <%= ENV['HOST_URL'] %>
+  default: &default
+  encoding: unicode
+  # pool: 5
+  port: 5432
+
+#   export APP_DATABASE_PASSWORD="password"
+# #export ENV['LOGPROJ_DATABASE_PASSWORD']
+# export HOST_URL="inventory.cb5noheu2j02.eu-west-1.rds.amazonaws.com:5432"
+# export RAILS_ENV=production
+# #May not be needed until 'rails s' in production environment
+# #export ENV["SECRET_KEY_BASE"]
