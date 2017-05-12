@@ -94,7 +94,7 @@ test:
 #
 production:
   <<: *default
-  database: inventory
+  database: logProj
   adapter: postgresql
   host: <%= ENV['HOST_URL'] %>
   username: logProj
