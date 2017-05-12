@@ -94,10 +94,10 @@ test:
 #
 production:
   <<: *default
-  database: logProj
+  database: <%= ENV['DATABASE_NAME'] %>
   adapter: postgresql
   host: <%= ENV['HOST_URL'] %>
-  username: logProj
+  username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   encoding: unicode
   port: 5432
