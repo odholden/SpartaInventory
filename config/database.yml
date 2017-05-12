@@ -94,10 +94,10 @@ test:
 #
 production:
   <<: *default
-  database: spartagram
+  database: inventory
   adapter: postgresql
   host: <%= ENV['HOST_URL'] %>
-  username: spartagram
+  username: logProj
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   encoding: unicode
   port: 5432
