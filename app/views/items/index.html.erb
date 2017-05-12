@@ -8,17 +8,14 @@
        <thead>
           <tr>
             <th>Item id</th>
-            <th>Item model</th>
-            <th>Item serial number</th>
-            <th></th>
+            <th>Description</th>
           </tr>
        </thead>
       <% @items.each do |item| %>
       <tr>
-        <th><%= item.id %></th>
-        <th><%= item.item_model %></th>   
-        <th><%= link_to item.item_serial_number, item %></th>   
-        <th> <a href="/edit/<%= item.id %>">Edit</a></th>
+        <th><%= item.id %></th> 
+        <th><%= link_to item.description, item %></th>   
+        <th><a href="/edit/<%= item.id %>">Edit</a></th>
        
       </tr>
        <%end%>

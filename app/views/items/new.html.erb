@@ -1,26 +1,11 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 col-lg-4">
+			<h1>Create Item</h1>
+			<%= render 'form', item: @item %>
+	  </div>
+  </div>
+</div>
 
-
-	<div class="text-center">
-		<div class="formItem">
-	      <form class="form-signin" action="<%= items_path %>" method="POST">
-	        <h2 class="form-signin-heading">Add a new log</h2>
-
-
-
-	        <label for="inputEmail" class="sr-only">Item Model</label>
-	        <input type="" name="item[item_model]" class="form-control" placeholder="eg. Macbook 2010" required autofocus>
-
-
-
-	        <label for="inputPassword" class="sr-only">Serial Number</label>
-			<input type="" name="item[item_serial_number]" class="form-control" placeholder="eg. QWER987QWSD" required>
-
-			<br />
-			<input class="btn btn-lg btn-success btn-block"  type="submit" value="Add new Item">
-	        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-	      </form>
-      </div>
-
-    </div> <!-- /container -->
 
 

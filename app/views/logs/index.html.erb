@@ -1,21 +1,39 @@
-<section class="text-center">
-<h1>Dashboard</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Logs</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Lender</th>
+                <th>Borrower</th>
+                <th>Returned to</th>
+                <th>Return date</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
 
-<h4>Choose the section</h4>
+            <tbody>
+              <% @logs.each do |log| %>
+                <tr>
+                  <td><%= "#{log.item.id} - #{log.item.description}" %></td>
+                  <td><%= log.lender.name %></td>
+                  <td><%= log.borrower.name %></td>
+                  <td><%= log.returned_to.try(:name) %></td>
+                  <td><%= log.return_date %></td>
+                  <td><%= link_to 'Show', log %></td>
+                  <td><%= link_to 'Edit', edit_log_path(log) %></td>
+                  <td><%= link_to 'Destroy', log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
 
+          <br>
 
-
-<hr>
-
-<a class="btn btn-primary bigBtn" href="/logs/new" role="button">New Log </a>
-<a class="btn btn-success bigBtn" href="/items/" role="button">Items</a>
-<a class="btn btn-info bigBtn" href="/logs/list" role="button">Logs</a>
-<a class="btn btn-warning bigBtn" href="/logs/list" role="button">Return item</a>
-
-</section>
-
-<br />
-<hr>
-
-
+          <%= link_to 'New Log', new_log_path %>
+    </div>
+  </div>
+</div>
 

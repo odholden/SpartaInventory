@@ -13,6 +13,7 @@
 #
 # Configure Using Gemfile
 # gem 'pg'
+#
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -22,20 +23,20 @@ default: &default
 
 development:
   <<: *default
-  database: logProj_development
+  database: inventory_development
   adapter: postgresql
   host: 192.168.10.150
   username: postgres
-  password: 'xyv'
-  default: &default
+  password: 'password'
   encoding: unicode
   pool: 5
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: logProj
+  #username: app
 
   # The password associated with the postgres role (username).
   #password:
@@ -47,7 +48,7 @@ development:
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  # port: 5432
+  #port: 5432
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -63,7 +64,14 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: logProj_test
+  database: inventory_test
+  adapter: postgresql
+  host: 192.168.10.150
+  username: postgres
+  password: 'password'
+  encoding: unicode
+  pool: 5
+
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,37 +90,14 @@ test:
 # You can use this database configuration with:
 #
 #   production:
-    # url: <%= ENV['DATABASE_URL'] %>
+#  url: <%= ENV['DATABASE_URL'] %>
 #
-# production:
-#   <<: *default
-#   database: logProj_production
-#   adapter: postgresql
-#   username: postgres
-#   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
-#   host: <%= ENV['HOST_URL'] %>
-#   default: &default
-#   encoding: unicode
-#   pool: 5
-#   port: 5432
-
-
 production:
   <<: *default
-  database: logProj
+  database: spartagram
   adapter: postgresql
   host: <%= ENV['HOST_URL'] %>
-  username: <%= ENV['APP_DATABASE_USERNAME'] %>
+  username: spartagram
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
-  default: &default
   encoding: unicode
-  pool: 5
   port: 5432
-
-
-#   export APP_DATABASE_PASSWORD="password"
-# #export ENV['LOGPROJ_DATABASE_PASSWORD']
-# export HOST_URL="inventory.cb5noheu2j02.eu-west-1.rds.amazonaws.com:5432"
-# export RAILS_ENV=production
-# #May not be needed until 'rails s' in production environment
-# #export ENV["SECRET_KEY_BASE"]

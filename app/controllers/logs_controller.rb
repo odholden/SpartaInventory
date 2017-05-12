@@ -1,156 +1,80 @@
 class LogsController < ApplicationController
-before_action :authenticate_user!
-	def index
 
-		render :'logs/index'
-	end
+  skip_before_action :verify_authenticity_token
 
-	def list
+  before_action :set_log, only: [:show, :edit, :update, :destroy]
 
-		@logs = Log.all
+  # GET /logs
+  # GET /logs.json
+  def index
+    @logs = Log.all
+  end
 
-		render :'logs/list'
-	end
+  # GET /logs/1
+  # GET /logs/1.json
+  def show
+  end
 
+  # GET /logs/new
+  def new
+    @items = Item.all
+    @lenders = User.findByRole 2
+    @borrowers = User.all
+    @log = Log.new
+  end
 
-	def new
-		#load all items
-		@item = Item.all
+  # GET /logs/1/edit
+  def edit
+  end
 
-		#load all users
-		@user = User.all
+  # POST /logs
+  # POST /logs.json
+  def create
+    @log = Log.new(log_params)
 
+    respond_to do |format|
+      if @log.save
+        format.html { redirect_to @log, notice: 'Log was successfully created.' }
+        format.json { render :show, status: :created, location: @log }
+      else
+        format.html { render :new }
+        format.json { render json: @log.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-		render :'logs/new'
-	end
+  # PATCH/PUT /logs/1
+  # PATCH/PUT /logs/1.json
+  def update
+    respond_to do |format|
+      if @log.update(log_params)
+        format.html { redirect_to @log, notice: 'Log was successfully updated.' }
+        format.json { render :show, status: :ok, location: @log }
+      else
+        format.html { render :edit }
+        format.json { render json: @log.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-	def show
-		#load all items
-		@item = Item.all
+  # DELETE /logs/1
+  # DELETE /logs/1.json
+  def destroy
+    @log.destroy
+    respond_to do |format|
+      format.html { redirect_to logs_url, notice: 'Log was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
-		#load all users
-		@user = User.all
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_log
+      @log = Log.find(params[:id])
+    end
 
-	    #load all log
-	    @log = Log.find params[:id]
-
-
-	    render :'logs/show'
-  	end
-
-  	def update
-		#update the logs using the log id
-  		@log = Log.find params[:id] 
-
-  		#update the logs with the retuner
-  		 @log.update_attributes(update_log_params)
-
-  		#update the item setting to true
-  		 @log.item[:loan] = true
-  		 @log.item.save
-
-
-
-  		redirect_to :logs
-  	end
-
-	def create
-
-		 log = Log.new(create_log_params)
-
-		 log.item[:loan] = false
-
-		 if !log.save
-		 	puts log.errors.full_messages
-		 else
-		 	log.item.save
-    		redirect_to :logs
-		 end
-
-	end
-
-private
-	#create a new record in log table
-	def create_log_params
-		params.require(:log).permit(:item_id, :user_id, :given_to, :date_taken )
-	end
-
-	#update a record in log table
-	def update_log_params
-    	params[:log].permit(:returner_id ,:date_returned, :notes)
- 	end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def log_params
+      params.require(:log).permit(:item_id, :return_date, :lender_id, :borrower_id, :returned_to_id)
+    end
 end
-
-
-
-# <select name="log[item_id]" class="form-control">
-#   		 <% @item.each do |item| %>
-#   	  <option value="<%=item.id%>"><%= item.item_model %></option>
-#   	  <%end%>
-#   	</select>
-
- # <select name="log[given_to]"  class="form-control">
-	#    <% @user.each do |user| %>
-	# 	  <option value="<%=user.id%>"><%= user.email %></option>
-	# 	  <%end%>
-	# 	</select>
-
-# <%= @log.returner_id.try(:email) %>
-
-
-# <input type="" name="log[user_id]">
-# <input type="" name="log[item_id]">
-# <input type="" name="log[given_to]">
-
-# <input type="" name="log[returner_id]">
-
-# <input type="" name="log[date_taken]">
-# <input type="" name="log[date_returned_]">
-
-
-
-# <table class="table table-hover">
-#   <tr>
-#     <th>Tech User</th>
-#     <th>Item</th>
-#     <th>Tech Given To</th>
-#     <th>Date Taken</th>
-#   </tr>
-
-#   <tr>
-# 	  <th name="log[user_id]"><%= @log.user.user_name %><% %></th>
-# 	   <th>
-# 		   <select name="log[item_id]" class="form-control">
-# 		   <% @item.each do |item| %>
-# 			  <option value="1"><%= item.item_model %></option>
-# 			  <%end%>
-# 			</select>
-# 		</th>
-# 	   <th>
-# 		   <select name="log[user_id]"  class="form-control">
-# 		   <% @user.each do |user| %>
-# 			  <option value="2"><%= user.user_name %></option>
-# 			  <%end%>
-# 			</select>
-# 		</th>
-# 	   <th>
-# 	   	<input type="hidden" name="log[date_taken]" value="<%= Time.now.strftime("%Y/%m/%d") %>"><%= Time.now.strftime("%Y/%m/%d") %>
-# 	   </th>
-
-#   </tr>
-# </table>
-
-
-
-
-
-# <hr>
-
-# <h3>Testing area...</h3>
-
-
-# <% if @item.loan ? %>
-# <%=@item.id%>
-# <%end%> 
-
-

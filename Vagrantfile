@@ -6,13 +6,12 @@ end
 
 Vagrant.configure("2") do |config|
 
-  config.vm.define "rails" do |rails|
-      rails.vm.box = "ubuntu/xenial64"
-      rails.vm.network "private_network", ip: "192.168.10.100"
-      rails.hostsupdater.aliases = ["development.local"]
-      rails.vm.synced_folder "../app", "/home/ubuntu/app"
-      rails.vm.provision "chef_solo" do |chef|
-          chef.cookbooks_path = ['cookbooks']
+  config.vm.define "app" do |app|
+      app.vm.box = "ubuntu/xenial64"
+      app.vm.network "private_network", ip: "192.168.10.100"
+      app.hostsupdater.aliases = ["development.local"]
+      app.vm.synced_folder ".", "/home/ubuntu/app"
+      app.vm.provision "chef_solo" do |chef|
           chef.run_list = ['recipe[rails-server::default]']
       end
   end
@@ -22,7 +21,6 @@ Vagrant.configure("2") do |config|
     db.vm.network "private_network", ip: "192.168.10.150"
     db.hostsupdater.aliases = ["database.local"]
     db.vm.provision "chef_solo" do |chef|
-        chef.cookbooks_path = ['cookbooks']
         chef.run_list = ['recipe[postgres-server::default]']
     end
   end

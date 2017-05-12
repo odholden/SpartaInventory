@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
+  root 'logs#index'
+
 	get '/logs/list', to: 'logs#list'
 
 	get '/bye', to: 'welcome#bye'
 
 	get '/edit/:id', to: 'items#edit'
 
-  devise_for :users
+  # devise_for :users
 
   resources :users
 

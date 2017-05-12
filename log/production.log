@@ -1144,3 +1144,8 @@ I, [2017-05-03T16:46:23.850764 #22503]  INFO -- : [492e2bcd-c75e-40b6-b4b8-df8f5
 I, [2017-05-03T16:46:23.851355 #22503]  INFO -- : [492e2bcd-c75e-40b6-b4b8-df8f57a7382a]   Rendering welcome/index.html.erb within layouts/application
 I, [2017-05-03T16:46:23.851448 #22503]  INFO -- : [492e2bcd-c75e-40b6-b4b8-df8f57a7382a]   Rendered welcome/index.html.erb within layouts/application (0.0ms)
 I, [2017-05-03T16:46:23.852197 #22503]  INFO -- : [492e2bcd-c75e-40b6-b4b8-df8f57a7382a] Completed 200 OK in 1ms (Views: 1.0ms)
+I, [2017-05-05T15:26:54.225350 #22311]  INFO -- : [63b57b5c-43cd-4cde-b396-0d8268dbb2ad] Started GET "/" for 192.168.10.1 at 2017-05-05 15:26:54 +0000
+I, [2017-05-05T15:26:54.235455 #22311]  INFO -- : [63b57b5c-43cd-4cde-b396-0d8268dbb2ad] Processing by WelcomeController#index as HTML
+I, [2017-05-05T15:26:54.277479 #22311]  INFO -- : [63b57b5c-43cd-4cde-b396-0d8268dbb2ad]   Rendering welcome/index.html.erb within layouts/application
+I, [2017-05-05T15:26:54.278552 #22311]  INFO -- : [63b57b5c-43cd-4cde-b396-0d8268dbb2ad]   Rendered welcome/index.html.erb within layouts/application (0.8ms)
+I, [2017-05-05T15:26:54.291500 #22311]  INFO -- : [63b57b5c-43cd-4cde-b396-0d8268dbb2ad] Completed 200 OK in 56ms (Views: 34.0ms)

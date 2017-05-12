@@ -7,53 +7,38 @@
        <table class="table table-hover">
         <thead>
           <tr>
-            <th>Tech User</th>
-            <th>Item model - serial number</th>
-            <th>Tech Given To</th>
-            <th>Date Taken</th>
+            <th>Item</th>
+            <th>Lender</th>
+            <th>Borrower</th>
           </tr>
          </thead>
 
         <tr>
-        	
-        	<th>
-        		<input type="hidden" name="log[user_id]" value="<%=current_user.id%>"><%=current_user.email%>
-        </th>	
-      	<th>
-
-
-
-      	<select name="log[item_id]" class="form-control">
-      		 <% @item.each do |item| %>
-            <%if item.loan?%>
-      	     <option value="<%=item.id%>"><%= item.item_model %> - <%= item.item_serial_number %></option>
-            <%end%>
-      	  <%end%>
-      	</select>
-
-
-
-
-      	</th>
-      	 <th>
-           <input list="give" name="log[given_to]" class="form-control" placeholder="myself">
-            <datalist id="give">
-            <option value="myself"></option>
-              <% @user.each do |user| %>
-              <option value="<%=user.email%>"></option>
+          <td>
+            	<select name="log[item_id]" class="form-control">
+            		 <% @items.each do |item| %>
+                  <%if item.current == nil %>
+            	     <option value="<%=item.id%>"><%= item.description %></option>
+                  <%end%>
+            	  <%end%>
+            	</select>
+          </td> 
+        	<td>
+            <select name="log[lender_id]" class="form-control">
+               <% @lenders.each do |user| %>
+                 <option value="<%=user.id%>"><%= user.name %></option>
               <%end%>
-            </datalist>
-      		  
-      		</select>
-       	</th>
-         <th>
-         	<input type="hidden" name="log[date_taken]" value="<%= Time.now.strftime("%Y/%m/%d") %>"><%= Time.now.strftime("%Y/%m/%d") %>
-         </th>
+            </select>
+         	</td>
+            <td>
+              <select name="log[borrower_id]" class="form-control">
+                 <% @borrowers.each do |user| %>
+                   <option value="<%=user.id%>"><%= user.name %></option>
+                <%end%>
+              </select>
+            </td>
         </tr>
       </table>
-
-        <!--   <input type="hidden" name="item[loan]" value="<%= false %>"> -->
-
 
       <input type="submit" class="btn btn-primary largeBtn" value="Add new Log">
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">

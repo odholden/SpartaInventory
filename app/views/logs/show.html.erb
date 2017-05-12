@@ -1,37 +1,35 @@
-<h1 class="text-center">You are returning an item with the serial number</h1>
-<h3 class="text-center"><em>&ldquo;<%=@log.item.item_serial_number%>&rdquo;</em></h3>
-
 
 <table class="table table-hover">
   <thead>
   <tr>
     <th>Log id</th>
-    <th>Tech User</th>
+    <th>Lender</th>
+    <th>Borrower</th>
     <th>Item</th>
-    <th>Tech Given To</th>
     <th>Date Taken</th>
     <th>Returned By</th>
     <th>Date Returned</th>
   </tr>
   </thead>
 
-  <th><%= @log.id %></th>
-  <th><%= link_to @log.user.email, @log %></th>
-   <th><%= @log.item.item_model %></th>
-   <th><%= @log.given_to %></th>
-   <th><%= @log.date_taken %></th>
-   <th><%= @log.returner.try(:email) %></th>
-   <th><%= @log.date_returned %></th>
-  <tr>
- 
-  </tr>
+  <tbody>
+    <tr>
+     <td><%= @log.id %></td>
+     <td><%= @log.lender.name %></td>
+     <td><%= @log.borrower.name %></td>
+     <td><%= @log.item.description %></td>
+     <td><%= @log.created_at %></td>
+     <td><%= @log.returned_to.try(:name) %></td>
+     <td><%= @log.return_date %></td>
+    </tr>
+  </tbody>
 </table>
 
 
 
 
 <!-- comment form partial to like tha picrues -->
-  <%= render "logs/form_return_item" , logs: @logs %>
+
 
 
   
