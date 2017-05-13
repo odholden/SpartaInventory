@@ -21,7 +21,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 # https://github.com/plataformatec/devise
 gem 'devise'
-
+gem 'rack-cors', :require => 'rack/cors'
 gem 'httparty', '~> 0.13.7'
 
 
