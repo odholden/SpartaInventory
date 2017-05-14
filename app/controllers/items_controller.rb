@@ -25,7 +25,6 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-    puts "saving"
     puts @item
     respond_to do |format|
       if @item.save
@@ -66,6 +65,7 @@ class ItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       
+
       @item = Item.find(params[:id])
 
     end
@@ -74,4 +74,5 @@ class ItemsController < ApplicationController
     def item_params
         params.require(:item).permit(:description )
     end
+
 end
