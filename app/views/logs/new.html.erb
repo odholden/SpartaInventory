@@ -1,50 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Checkout an item</h1>
+         <form class="" action="<%= logs_path %>" method="POST">
 
-
-
-	<div class="text-center">	
-  <h1>Add a new log</h1>
-     <form class="" action="<%= logs_path %>" method="POST">
-       <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Lender</th>
-            <th>Borrower</th>
-          </tr>
-         </thead>
-
-        <tr>
-          <td>
+            <div class="form-group">
+              <label for="item_id">Choose an item</label>
             	<select name="log[item_id]" class="form-control">
             		 <% @items.each do |item| %>
                   <%if item.current == nil %>
-            	     <option value="<%=item.id%>"><%= item.description %></option>
+            	     <option value="<%=item.id%>"><%= "#{item.id} - #{item.description}" %></option>
                   <%end%>
             	  <%end%>
             	</select>
-          </td> 
-        	<td>
-            <select name="log[lender_id]" class="form-control">
-               <% @lenders.each do |user| %>
-                 <option value="<%=user.id%>"><%= user.name %></option>
-              <%end%>
-            </select>
-         	</td>
-            <td>
+            </div>
+
+            <div class="form-group">
+              <label for="borrower_id">Borrower</label>
               <select name="log[borrower_id]" class="form-control">
                  <% @borrowers.each do |user| %>
                    <option value="<%=user.id%>"><%= user.name %></option>
                 <%end%>
               </select>
-            </td>
-        </tr>
-      </table>
+            </div>
 
-      <input type="submit" class="btn btn-primary largeBtn" value="Add new Log">
-      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  </form>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary largeBtn" value="Checkout">
+            </div>
 
-</div>  
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      </form>
+
+    </div>
+  </div>
+</div>
 
 
 

@@ -2,21 +2,18 @@ Rails.application.routes.draw do
 
   root 'logs#index'
 
-	get '/logs/list', to: 'logs#list'
+  get '/login', to: 'session#login'
 
-	get '/bye', to: 'welcome#bye'
+  get '/logout', to: 'session#logout'
 
-	get '/edit/:id', to: 'items#edit'
-
-  # devise_for :users
+  post '/login', to: 'session#create'
 
   resources :users
 
   resources :logs
 
+  get 'logs/:id/checkin' , to: 'logs#checkin', as: 'checkin_log'
+
   resources :items
 
-  
-  root 'welcome#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,23 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-xs-12">
+          <h1>Items</h1>
 
-  <div class="text-center"> 
-      <h1>Add a new item</h1>
+          <table class="table table-hover">
+             <thead>
+                <tr>
+                  <th>Item id</th>
+                  <th>Description</th>
+                </tr>
+             </thead>
+            <% @items.each do |item| %>
+            <tr>
+              <th><%= item.id %></th> 
+              <th><%= link_to item.description, item %></th>   
+              <th><a href="<%= edit_item_path item %>">Edit</a></th>
+            </tr>
+             <%end%>
+          </table>
 
-    <a class="btn btn-success largeBtn" href="/items/new" role="button">Add new Item </a>
-
-    <table class="table table-hover">
-       <thead>
-          <tr>
-            <th>Item id</th>
-            <th>Description</th>
-          </tr>
-       </thead>
-      <% @items.each do |item| %>
-      <tr>
-        <th><%= item.id %></th> 
-        <th><%= link_to item.description, item %></th>   
-        <th><a href="/edit/<%= item.id %>">Edit</a></th>
-       
-      </tr>
-       <%end%>
-    </table>
+          <a class="btn btn-success largeBtn" href="/items/new" role="button">Add new Item </a>
+    </div>
+  </div>
 </div>
