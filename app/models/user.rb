@@ -2,7 +2,9 @@ class User
   include HTTParty
   attr_accessor :id , :first_name, :last_name, :role, :email
 
-  base_uri "http://identity.spartaglobal.academy/identities"
+  base_uri "http://identity.spartaglobal.academy/"
+
+  @@token = ""
 
   def initialize id, first_name, last_name, role, email
     @id = id
@@ -17,7 +19,9 @@ class User
   end
 
   def self.all
-    response = User.get("/")
+    response = User.get("/identities",
+      :headers => { "Authorization" => "Bearer #{@@token}"}
+    )
 
     case response.code
       when 200
@@ -31,7 +35,9 @@ class User
 
   def self.find id
 
-    response = User.get("/#{id}")
+    response = User.get("/identities/#{id}",
+      :headers => { "Authorization" => "Bearer #{@@token}"}
+    )
 
     case response.code
       when 200
@@ -43,10 +49,12 @@ class User
     end
   end
 
-  def self.findByRole role
+  def self.find_by_role role
 
-    response = User.get("/roles/#{role}")
-
+    response = User.get("/identities/roles/#{role}",
+      :headers => { "Authorization" => "Bearer #{@@token}"}
+    )
+    puts "Bearer #{@@token}"
     case response.code
       when 200
         return self.bind_array response.parsed_response
@@ -55,6 +63,13 @@ class User
       when 500...600
         return nil
     end
+  end
+
+  def self.authenticate email, password
+    User.post("/tokens", { 
+      :body => { "email" => email, "password" => password }.to_json,
+      :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
+    })
   end
 
   def self.bind_array data
@@ -66,5 +81,8 @@ class User
   def self.bind item
     User.new item['_id'], item["first_name"], item["last_name"],item["role"], item["email"]
   end
-  
+
+  def self.token=t
+      @@token = t
+  end
 end

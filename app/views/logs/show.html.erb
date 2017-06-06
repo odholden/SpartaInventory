@@ -1,34 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Log id</th>
+          <th>Lender</th>
+          <th>Borrower</th>
+          <th>Item</th>
+          <th>Date Taken</th>
+          <th>Returned By</th>
+          <th>Date Returned</th>
+        </tr>
+        </thead>
 
-<table class="table table-hover">
-  <thead>
-  <tr>
-    <th>Log id</th>
-    <th>Lender</th>
-    <th>Borrower</th>
-    <th>Item</th>
-    <th>Date Taken</th>
-    <th>Returned By</th>
-    <th>Date Returned</th>
-  </tr>
-  </thead>
+        <tbody>
+          <tr>
+           <td><%= @log.id %></td>
+           <td><%= @log.lender.name %></td>
+           <td><%= @log.borrower.name %></td>
+           <td><%= @log.item.description %></td>
+           <td><%= @log.created_at %></td>
+           <td><%= @log.returned_to.try(:name) %></td>
+           <td><%= @log.return_date %></td>
+          </tr>
+        </tbody>
+      </table>
 
-  <tbody>
-    <tr>
-     <td><%= @log.id %></td>
-     <td><%= @log.lender.name %></td>
-     <td><%= @log.borrower.name %></td>
-     <td><%= @log.item.description %></td>
-     <td><%= @log.created_at %></td>
-     <td><%= @log.returned_to.try(:name) %></td>
-     <td><%= @log.return_date %></td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<!-- comment form partial to like tha picrues -->
+      <a class="btn btn-success largeBtn" href="<%= logs_path %>" role="button">Back to logs</a>
+    </div>
+  </div>
+</div>
 
 
 
