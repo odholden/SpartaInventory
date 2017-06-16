@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "db" do |db|
-    db.vm.box = "ubuntu/trusty64"
+    db.vm.box = "ubuntu/xenial64"
     db.vm.network "private_network", ip: "192.168.10.150"
     db.hostsupdater.aliases = ["database.local"]
     db.vm.provision "chef_solo" do |chef|

@@ -4,12 +4,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def check_login
-    token = session[:token]
+    token = session[:token] || request.headers["Authorization"]
 
     if token
       User.token = token
     else
-      redirect_to login_path
+      respond_to do |format|
+        format.html { redirect_to login_path }
+        format.json { render :status => 403 }
+      end
     end
   end
 
