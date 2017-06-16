@@ -47,7 +47,9 @@ class LogsController < ApplicationController
     @log = Log.new(log_params)
 
     # Current user checks out
-    @log.lender_id = current_user.id
+    if current_user
+      @log.lender_id = current_user.id
+    end
 
     respond_to do |format|
       if @log.save
