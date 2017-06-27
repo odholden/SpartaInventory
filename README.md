@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-THIS NEEDS MORE
+THIS NEEDS MORE, SO MUCH MORE
 
 * Ruby version
 
