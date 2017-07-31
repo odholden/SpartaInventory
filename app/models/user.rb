@@ -79,7 +79,11 @@ class User
   end
 
   def self.bind item
-    User.new item['_id'], item["first_name"], item["last_name"],item["role"], item["email"]
+    if item
+      User.new item['_id'], item["first_name"], item["last_name"],item["role"], item["email"]
+    else
+      User.new
+    end
   end
 
   def self.token=t
