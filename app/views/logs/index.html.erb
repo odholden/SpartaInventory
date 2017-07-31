@@ -20,7 +20,9 @@
                   <td><%= "#{log.item.id} - #{log.item.description}" %></td>
                   <td><%= log.lender.name %></td>
                   <td><%= log.borrower.name %></td>
-                  <td><%= log.returned_to.try(:name) %></td>
+                  <% if !log.returned_to %>
+                    <td><%= log.returned_to.try(:name) %></td>
+                  <% end %>
                   <td><%= log.return_date %></td>
                   <td>
                     <% if !log.returned_to %>
