@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'logs#index'
+  root 'items#index'
 
   get '/login', to: 'session#login'
 
