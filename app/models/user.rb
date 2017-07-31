@@ -80,9 +80,9 @@ class User
 
   def self.bind item
     if item != nil
-      User.new item['_id'], item["first_name"], item["last_name"],item["role"], item["email"]
+      return User.new item['_id'], item["first_name"], item["last_name"],item["role"], item["email"]
     else
-      User.new
+      return nil
     end
   end
 
