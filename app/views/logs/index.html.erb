@@ -18,8 +18,8 @@
               <% @logs.each do |log| %>
                 <tr>
                   <td><%= "#{log.item.id} - #{log.item.description}" %></td>
-                  <td><%= log.lender.name %></td>
-                  <td><%= log.borrower.name %></td>
+                  <td><%= log.try(:lender).try(:name) %></td>
+                  <td><%= log.try(:borrower).try(:name) %></td>
                   <td><%= log.returned_to.try(:name) %></td>
                   <td><%= log.return_date %></td>
                   <td>
