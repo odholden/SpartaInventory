@@ -1,11 +1,15 @@
 #items {
 
   .checked-out {
-    color:red;
+    a {
+      color:red;
+    }
   }
 
   .available {
-    color:green;
+    a {
+      color:green;
+    }
   }
 
 }

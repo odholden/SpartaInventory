@@ -6,6 +6,14 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.order(:id)
+
+    @out = @items.to_a.reduce(0) do |total , item|
+
+      if item.current != nil then total += 1 end
+      total
+    end
+
+    @available = @items.length - @out 
   end
 
   # GET /items/1
@@ -73,7 +81,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-        params.require(:item).permit(:description )
+        params.require(:item).permit(:description, :serial)
     end
 
 end

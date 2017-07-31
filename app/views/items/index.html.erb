@@ -3,6 +3,18 @@
       <div class="col-xs-12">
           <h1>Items</h1>
 
+          <div class="summary">
+            <div>
+              Total : <%= @items.length %>
+            </div>
+            <div>
+              Available : <%= @available %>
+            </div>
+            <div>
+              Out : <%= @out %>
+            </div>
+          </div>
+
           <table class="table table-hover">
              <thead>
                 <tr>
@@ -14,10 +26,10 @@
             <% @items.each do |item| %>
             <tr>
               <th><%= item.id %></th> 
-              <th><%= link_to item.description, item %></th>   
-              <th><a href="<%= edit_item_path item %>">Edit</a></th>
+              <th><a href="<%= edit_item_path item %>"><%= item.description %></a></th>   
               <% if item.current %>
-                <th class="checked-out">Checked out</th>
+                <th class="checked-out">
+                  <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %></th>
               <% else %>
                 <th class="available">Available</th>
               <% end %>
