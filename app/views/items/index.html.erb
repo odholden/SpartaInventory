@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" id="items">
   <div class="row">
       <div class="col-xs-12">
           <h1>Items</h1>
@@ -8,6 +8,7 @@
                 <tr>
                   <th>Item id</th>
                   <th>Description</th>
+                  <th>Status</th>
                 </tr>
              </thead>
             <% @items.each do |item| %>
@@ -15,6 +16,11 @@
               <th><%= item.id %></th> 
               <th><%= link_to item.description, item %></th>   
               <th><a href="<%= edit_item_path item %>">Edit</a></th>
+              <% if item.current %>
+                <th class="checked-out">Checked out</th>
+              <% else %>
+                <th class="available">Available</th>
+              <% end %>
             </tr>
              <%end%>
           </table>
