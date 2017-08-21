@@ -24,5 +24,4 @@ Vagrant.configure("2") do |config|
         chef.run_list = ['recipe[postgres-server::default]']
     end
   end
-
 end

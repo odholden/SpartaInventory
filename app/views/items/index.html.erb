@@ -21,6 +21,7 @@
                   <th>Item id</th>
                   <th>Description</th>
                   <th>Status</th>
+                  <th>Actions</th>
                 </tr>
              </thead>
             <% @items.each do |item| %>
@@ -33,6 +34,7 @@
               <% else %>
                 <th class="available">Available</th>
               <% end %>
+                <th><%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></th>
             </tr>
              <%end%>
           </table>
