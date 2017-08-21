@@ -5,6 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+############## Gem for Test framework ###############
+gem 'capybara', '~> 2.15', '>= 2.15.1'
+gem 'site_prism', '~> 2.9'
+gem 'selenium-webdriver', '~> 3.5', '>= 3.5.1'
+gem 'rspec', '~> 3.6'
+gem 'cucumber', '~> 2.4'
+gem 'selenium', '~> 0.2.11'
 
 
 ############## Gem for bootstrap 3 ###############
