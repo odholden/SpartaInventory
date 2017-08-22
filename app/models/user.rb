@@ -66,7 +66,8 @@ class User
   end
 
   def self.authenticate email, password
-    User.post("/tokens", { 
+
+    User.post("/tokens", {
       :body => { "email" => email, "password" => password }.to_json,
       :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
     })

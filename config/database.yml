@@ -25,7 +25,7 @@ development:
   <<: *default
   database: inventory_development
   adapter: postgresql
-  host: 192.168.10.150
+  host: <%= ENV['DATABASE_HOST'] %>
   username: postgres
   password: 'password'
   encoding: unicode
@@ -66,7 +66,7 @@ test:
   <<: *default
   database: inventory_test
   adapter: postgresql
-  host: 192.168.10.150
+  host: <%= ENV['DATABASE_HOST'] %>
   username: postgres
   password: 'password'
   encoding: unicode
@@ -96,7 +96,7 @@ production:
   <<: *default
   database: <%= ENV['DATABASE_NAME'] %>
   adapter: postgresql
-  host: <%= ENV['HOST_URL'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   encoding: unicode
