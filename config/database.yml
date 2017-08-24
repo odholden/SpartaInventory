@@ -101,3 +101,13 @@ production:
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   encoding: unicode
   port: 5432
+
+# production:
+#   <<: *default
+#   database: inventory_production
+#   adapter: postgresql
+#   host: <%= ENV['DATABASE_HOST'] %>
+#   username: <%= ENV['DATABASE_USER'] %>
+#   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+#   encoding: unicode
+#   port: 5432
