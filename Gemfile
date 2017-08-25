@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "inspec"
+gem 'watir-scroll'
+
 ############## Gem for Test framework ###############
 gem 'capybara', '~> 2.15', '>= 2.15.1'
 gem 'site_prism', '~> 2.9'
