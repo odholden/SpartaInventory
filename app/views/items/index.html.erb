@@ -33,6 +33,7 @@
                   <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %></th>
               <% else %>
                 <th class="available">Available</th>
+                <!-- Shows availability? -->
               <% end %>
                 <th><%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></th>
             </tr>
