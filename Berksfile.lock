@@ -4,10 +4,10 @@ DEPENDENCIES
     revision: 49ec6533358474c72db73d34f67d9f6a4f38c4cb
   rails-server
     git: git@github.com:spartaglobal/rails-server-cookbook.git
-    revision: 12acc57683c02a6d5de2177130dfc47057653ec1
+    revision: 3f4368488165a30971ce859c8516619e7626e5da
 
 GRAPH
-  build-essential (8.0.2)
+  build-essential (8.0.3)
     mingw (>= 1.1)
     seven_zip (>= 0.0.0)
   compat_resource (12.19.0)
@@ -18,19 +18,19 @@ GRAPH
     yum-epel (>= 0.0.0)
   mingw (2.0.1)
     seven_zip (>= 0.0.0)
-  ohai (5.1.0)
-  openssl (7.0.1)
+  ohai (5.2.0)
+  openssl (7.1.0)
   postgres-server (0.1.0)
     postgresql (~> 6.1.1)
   postgresql (6.1.1)
     build-essential (>= 2.0.0)
     compat_resource (>= 12.16.3)
     openssl (>= 4.0)
-  rails-server (1.0.6)
+  rails-server (2.3.1)
     git (~> 6.0.0)
   seven_zip (2.0.2)
     windows (>= 1.2.2)
-  windows (3.0.5)
+  windows (3.1.2)
     ohai (>= 4.0.0)
-  yum-epel (2.1.1)
+  yum-epel (2.1.2)
     compat_resource (>= 12.16.3)

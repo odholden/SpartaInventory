@@ -11683,3 +11683,313 @@ Processing by LogsController#new as HTML
 Completed 200 OK in 205ms (Views: 121.9ms | ActiveRecord: 2.1ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-09-03 19:21:59 +0100
+  
+PG::ConnectionBad (could not connect to server: Operation timed out
+	Is the server running on host "192.168.10.150" and accepting
+	TCP/IP connections on port 5432?
+):
+  
+activerecord (5.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:671:in `initialize'
+activerecord (5.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:671:in `new'
+activerecord (5.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:671:in `connect'
+activerecord (5.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:217:in `initialize'
+activerecord (5.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `new'
+activerecord (5.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (5.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:729:in `new_connection'
+activerecord (5.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:773:in `checkout_new_connection'
+activerecord (5.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:752:in `try_to_checkout_new_connection'
+activerecord (5.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:713:in `acquire_connection'
+activerecord (5.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:490:in `checkout'
+activerecord (5.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:364:in `connection'
+activerecord (5.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:883:in `retrieve_connection'
+activerecord (5.0.2) lib/active_record/connection_handling.rb:128:in `retrieve_connection'
+activerecord (5.0.2) lib/active_record/connection_handling.rb:91:in `connection'
+activerecord (5.0.2) lib/active_record/migration.rb:559:in `connection'
+activerecord (5.0.2) lib/active_record/migration.rb:546:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/stephen.reid/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/stephen.reid/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/stephen.reid/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.4ms)
+  Rendering /Users/stephen.reid/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/stephen.reid/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /Users/stephen.reid/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/stephen.reid/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /Users/stephen.reid/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (79.1ms)
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6206110587564623505);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20170328222908)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170328222908"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateItems (20170328223146)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "items" ("id" serial primary key, "item_model" character varying, "item_serial_number" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170328223146"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLogs (20170329130809)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "logs" ("id" serial primary key, "item_id" integer, "user_id" integer, "given_to" text, "returner_id" integer, "date_taken" date, "date_returned" date, "notes" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_9f6e1d2d1a"
+FOREIGN KEY ("item_id")
+  REFERENCES "items" ("id")
+, CONSTRAINT "fk_rails_8fc980bf44"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_logs_on_item_id" ON "logs"  ("item_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_logs_on_user_id" ON "logs"  ("user_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170329130809"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddLoanToItems (20170330115758)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "items" ADD "loan" boolean DEFAULT 't'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170330115758"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeItemModelToDescription (20170512152256)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" RENAME COLUMN "item_model" TO "description"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170512152256"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeLogFields (20170512152601)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "logs" RENAME COLUMN "given_to" TO "borrower_id"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "logs" RENAME COLUMN "returner_id" TO "returned_to_id"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "logs" RENAME COLUMN "date_returned" TO "return_date"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "logs" DROP "date_taken"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170512152601"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeUserIdToLenderId (20170512162359)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "logs" RENAME COLUMN "user_id" TO "lender_id"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER INDEX "index_logs_on_user_id" RENAME TO "index_logs_on_lender_id"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170512162359"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeLenderIdToString (20170512162526)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "logs" DROP CONSTRAINT "fk_rails_8fc980bf44"[0m
+  [1m[35m (4.5ms)[0m  [1m[35mALTER TABLE "logs" ALTER COLUMN "lender_id" TYPE character varying[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170512162526"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveUnusedFromLogsAddReferences (20170512164208)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "logs" DROP "item_id"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "logs" ADD "item_id" integer[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_logs_on_item_id" ON "logs"  ("item_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "logs" ADD CONSTRAINT "fk_rails_9f6e1d2d1a"
+FOREIGN KEY ("item_id")
+  REFERENCES "items" ("id")
+[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "items" DROP "item_serial_number"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "items" DROP "loan"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170512164208"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeReturnToIdToString (20170514230858)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "logs" ALTER COLUMN "returned_to_id" TYPE character varying[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170514230858"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddSerialToItem (20170731101825)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ADD "serial" text[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170731101825"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-09-04 08:48:14 UTC], ["updated_at", 2017-09-04 08:48:14 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6206110587564623505)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 192.168.10.1 at 2017-09-04 08:48:28 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+Redirected to http://development.local:3000/login
+Filter chain halted as :check_login rendered or redirected
+Completed 302 Found in 20ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 192.168.10.1 at 2017-09-04 08:48:28 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SessionController#login as HTML
+  Rendering session/login.html.erb within layouts/application
+  Rendered session/_form.html.erb (0.7ms)
+  Rendered session/login.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 5180ms (Views: 5166.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 192.168.10.1 at 2017-09-04 08:48:45 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SessionController#create as HTML
+  Parameters: {"email"=>"test@spartaglobal.com", "password"=>"[FILTERED]", "authenticity_token"=>"T9qd/fmHEgqWt/oLiOkofmbVcdBtgX4V0umJXwt5DJPUCYFReuIuFNxpkHRNmvhgoYe/+V/aQP9xg+9DeO+4oA=="}
+Redirected to http://development.local:3000/logs
+Completed 302 Found in 206ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 08:48:45 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (3.6ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  Rendered logs/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 169ms (Views: 117.0ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 08:48:54 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 202ms (Views: 150.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/items/new" for 192.168.10.1 at 2017-09-04 08:48:55 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#new as HTML
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (33.4ms)
+  Rendered items/new.html.erb within layouts/application (45.0ms)
+Completed 200 OK in 220ms (Views: 188.4ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/items" for 192.168.10.1 at 2017-09-04 08:48:58 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5Rf9EPokgj57a2xSdPhIrmQy+kUFw9t1JtK9crBzc4Mvkhahv62MhwLIEiT1KYraxda2Ln6/zrW9jL+84Uc0cQ==", "item"=>{"description"=>"dsfgsdfgs", "serial"=>"123123"}, "commit"=>"Save Item"}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "items" ("description", "created_at", "updated_at", "serial") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "dsfgsdfgs"], ["created_at", 2017-09-04 08:48:58 UTC], ["updated_at", 2017-09-04 08:48:58 UTC], ["serial", "123123"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/items/1
+Completed 302 Found in 8ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/items/1" for 192.168.10.1 at 2017-09-04 08:48:58 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 147ms (Views: 130.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/items/" for 192.168.10.1 at 2017-09-04 08:49:00 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (14.7ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (0.7ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 226ms (Views: 147.7ms | ActiveRecord: 15.4ms)
+
+
+Started GET "/items" for 192.168.10.1 at 2017-09-04 08:49:01 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (1.6ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 151ms (Views: 129.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/logs/new" for 192.168.10.1 at 2017-09-04 08:49:02 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#new as HTML
+  Rendering logs/new.html.erb within layouts/application
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mLog Load (1.1ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  Rendered logs/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 336ms (Views: 195.3ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/logs" for 192.168.10.1 at 2017-09-04 08:49:24 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#create as HTML
+  Parameters: {"log"=>{"item_id"=>"1", "borrower_id"=>"595a3e86a7ab7d0001cdf57e"}, "authenticity_token"=>"ecp9lYey1osmFvu9dPzToRovkJWUbFTRf69a8AXjBk3iGWE5BNfqlWzIkcKxjwO/3X1evKY3ajvcxTzsdnWyfg=="}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (4.9ms)[0m  [1m[32mINSERT INTO "logs" ("lender_id", "borrower_id", "created_at", "updated_at", "item_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["lender_id", "599aab6ea7ab7d0001cdf5d5"], ["borrower_id", "595a3e86a7ab7d0001cdf57e"], ["created_at", 2017-09-04 08:49:24 UTC], ["updated_at", 2017-09-04 08:49:24 UTC], ["item_id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://development.local:3000/logs/1
+Completed 302 Found in 37ms (ActiveRecord: 7.9ms)
+
+
+Started GET "/logs/1" for 192.168.10.1 at 2017-09-04 08:49:24 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLog Load (1.6ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering logs/show.html.erb within layouts/application
+  Rendered logs/show.html.erb within layouts/application (33.0ms)
+Completed 500 Internal Server Error in 135ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    17:         <tbody>
+    18:           <tr>
+    19:            <td><%= @log.id %></td>
+    20:            <td><%= @log.lender.name %></td>
+    21:            <td><%= @log.borrower.name %></td>
+    22:            <td><%= @log.item.description %></td>
+    23:            <td><%= @log.created_at %></td>
+  
+app/views/logs/show.html.erb:20:in `_app_views_logs_show_html_erb__3127870988899384477_70037549191420'
+  Rendering /var/lib/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.9ms)
+  Rendering /var/lib/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /var/lib/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /var/lib/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.6ms)
+Started GET "/logs" for 192.168.10.1 at 2017-09-04 08:49:31 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LogsController#index as HTML
+  [1m[36mLog Load (0.7ms)[0m  [1m[34mSELECT "logs".* FROM "logs"[0m
+  Rendering logs/index.html.erb within layouts/application
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered logs/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 691ms (Views: 162.4ms | ActiveRecord: 1.9ms)
+
+

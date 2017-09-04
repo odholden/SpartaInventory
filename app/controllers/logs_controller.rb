@@ -8,7 +8,7 @@ class LogsController < ApplicationController
   # GET /logs
   # GET /logs.json
   def index
-    @logs = Log.all
+    @logs = Log.order(:created_at)
     @logs = @logs.map do |log|
       populate_log log
     end
