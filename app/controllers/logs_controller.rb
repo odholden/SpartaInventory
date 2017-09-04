@@ -17,6 +17,7 @@ class LogsController < ApplicationController
   # GET /logs/1
   # GET /logs/1.json
   def show
+    @log = populate_log Log
   end
 
   # GET /logs/new
