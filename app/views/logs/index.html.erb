@@ -6,7 +6,6 @@
             <thead>
               <tr>
                 <th>Item</th>
-                <th>Date</th>
                 <th>Lender</th>
                 <th>Borrower</th>
                 <th>Returned to</th>
@@ -19,7 +18,6 @@
               <% @logs.each do |log| %>
                 <tr>
                   <td><%= "#{log.item.id} - #{log.item.description}" %></td>
-                  <td><%= log.try(:created_at) %></td>
                   <td><%= log.try(:lender).try(:name) %></td>
                   <td><%= log.try(:borrower).try(:name) %></td>
                   <td><%= log.try(:returned_to).try(:name) %></td>
