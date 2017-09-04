@@ -11,12 +11,14 @@ class LogsController < ApplicationController
     @logs = Log.all
     @logs = @logs.map do |log|
       populate_log log
+    @date
     end
   end
 
   # GET /logs/1
   # GET /logs/1.json
   def show
+    @date = Date.today() + 5
   end
 
   # GET /logs/new
