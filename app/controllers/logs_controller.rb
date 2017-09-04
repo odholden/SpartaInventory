@@ -17,6 +17,7 @@ class LogsController < ApplicationController
   # GET /logs/1
   # GET /logs/1.json
   def show
+    
   end
 
   # GET /logs/new

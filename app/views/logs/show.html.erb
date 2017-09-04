@@ -17,8 +17,8 @@
         <tbody>
           <tr>
            <td><%= @log.id %></td>
-           <td><%= @log.lender.name %></td>
-           <td><%= @log.borrower.name %></td>
+           <td><%= @log.lender.try(:name) %></td>
+           <td><%= @log.borrower.try(:name) %></td>
            <td><%= @log.item.description %></td>
            <td><%= @log.created_at %></td>
            <td><%= @log.returned_to.try(:name) %></td>
