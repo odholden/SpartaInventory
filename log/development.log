@@ -13025,3 +13025,15 @@ Completed 200 OK in 183ms (Views: 155.2ms | ActiveRecord: 3.0ms)
 
 
 >>>>>>> Stashed changes
+Started GET "/items" for 192.168.10.1 at 2017-09-04 11:29:19 +0000
+Cannot render console from 192.168.10.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" ASC[0m
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 1], ["LIMIT", 1]]
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT  "logs".* FROM "logs" WHERE "logs"."item_id" = $1 AND "logs"."return_date" IS NULL LIMIT $2[0m  [["item_id", 2], ["LIMIT", 1]]
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 1758ms (Views: 1561.3ms | ActiveRecord: 12.6ms)
+
+
