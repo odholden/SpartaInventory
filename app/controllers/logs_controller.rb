@@ -18,7 +18,7 @@ class LogsController < ApplicationController
   # GET /logs/1
   # GET /logs/1.json
   def show
-    @date = Date.today() + 5
+    @log = populate_log @log
   end
 
   # GET /logs/new
@@ -103,7 +103,6 @@ class LogsController < ApplicationController
       if log.returned_to_id
         log.returned_to = User.find log.returned_to_id
       end
-
       return log
     end
 
