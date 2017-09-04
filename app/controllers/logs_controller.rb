@@ -17,6 +17,8 @@ class LogsController < ApplicationController
   # GET /logs/1
   # GET /logs/1.json
   def show
+    @due_date = DateTime.now 
+    @borrowers = User.all
   end
 
   # GET /logs/new
