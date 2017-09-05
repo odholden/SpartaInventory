@@ -24,11 +24,7 @@
                   <td><%= log.try(:returned_to).try(:name) %></td>
                   <td><%= log.try(:return_date)%></td>
                   <!-- new Due Date Column Added -->
-                  <%if log.try(:due_date).to_date < Date.current.to_date%>
-                    <td class="due"><%= log.try(:due_date)%></td>
-                  <%else%>
-                     <td><%= log.try(:due_date)%></td>
-                  <%end%>
+                  <td><%= log.try(:due_date)%></td>
                   <td>
                     <% if !log.returned_to %>
                       <%= link_to 'Check in', checkin_log_path(log), data: { confirm: 'Are you sure?' } %></td>
