@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @logs = Log.all
     @items = Item.order(:id)
     @out = @items.to_a.reduce(0) do |total , item|
 
