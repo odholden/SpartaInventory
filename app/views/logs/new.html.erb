@@ -24,9 +24,11 @@
               </select>
             </div>
 
+
+
             <div>
-              <label for="return_date">Due Date</label>
-              <input class="form-control" type="date" name="due_date" data-date-formate="yyyy/mm/dd">
+              <label>Due Date</label>
+              <input class="form-control" type="date" name="log[due_date]" data-date-format="yyyy-mm-dd" value="<%=Date.current.tomorrow%>">
             </div>
 
             <div class="form-group">

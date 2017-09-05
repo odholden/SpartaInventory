@@ -11,9 +11,7 @@ class LogsController < ApplicationController
     @logs = Log.all
     @logs = @logs.map do |log|
       populate_log log
-    @log = populate_log @log
     end
-
   end
 
   # GET /logs/1
@@ -48,6 +46,7 @@ class LogsController < ApplicationController
   # POST /logs.json
   def create
     @log = Log.new(log_params)
+    puts params[:due_date]
 
     # Current user checks out
     if current_user
