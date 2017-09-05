@@ -47,6 +47,7 @@ class LogsController < ApplicationController
   # POST /logs.json
   def create
     @log = Log.new(log_params)
+    puts params[:due_date]
 
     # Current user checks out
     if current_user
@@ -92,7 +93,7 @@ class LogsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_log
       @log = Log.find(params[:id])
-      # @log = populate_log @log
+
     end
 
     def populate_log log
@@ -110,6 +111,6 @@ class LogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params
-      params.require(:log).permit(:item_id, :return_date, :borrower_id, :returned_to_id, :lender_id)
+      params.require(:log).permit(:item_id, :return_date, :borrower_id, :returned_to_id, :lender_id, :due_date)
     end
 end
