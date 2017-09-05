@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   post '/login', to: 'session#create'
 
+  get '/notify', to: 'notify#message'
+
   resources :users
 
   resources :logs
