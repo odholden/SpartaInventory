@@ -17,6 +17,7 @@
         <tbody>
           <tr>
            <td><%= @log.id %></td>
+           <!-- try finds the User names associated to the log, blank if null -->
            <td><%= @log.try(:lender).try(:name) %></td>
            <td><%= @log.try(:borrower).try(:name) %></td>
            <td><%= @log.item.description %></td>

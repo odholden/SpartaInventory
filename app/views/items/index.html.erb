@@ -31,11 +31,12 @@
               <th><%= item.id %></th> 
               <th><a href="<%= edit_item_path item %>"><%= item.description %></a></th>   
               <% if item.current %>
-                <th><%= item.try(:lender).try(:name) %></th>
-                <th><%= item.try(:borrower).try(:name) %></th>
+                <th><%= item.current.lender.name %></th>
+                <th><%= item.current.borrower.name %></th>
                 <th class="checked-out">
                   <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %></th>
               <% else %>
+                <!-- Leaves empty space where lender and borrower should be -->
                 <th></th>
                 <th></th>
                 <th class="available">Available</th>
