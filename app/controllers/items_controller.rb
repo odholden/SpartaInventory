@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
     end
 
     @available = @items.length - @out 
+
     # populates items to contain the names of borrowers and lenders
     @items = @items.map do |item|
       populate_item item 
@@ -86,9 +87,14 @@ class ItemsController < ApplicationController
     def item_params
         params.require(:item).permit(:description, :serial)
     end
-
+    # Populates item with lender and buyer ids
     def populate_item item 
-      item.lender = User.find item.logs.last.lender_id.name
-      item.borrower = User.find item.logs.last.borrower_id.name
+
+      if item.current
+        item.current.lender = User.find item.logs.last.lender_id
+        item.current.borrower = User.find item.logs.last.borrower_id
+      end
+
+      return item
     end
 end
