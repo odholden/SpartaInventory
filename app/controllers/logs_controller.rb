@@ -7,6 +7,7 @@ class LogsController < ApplicationController
 
   # GET /logs
   # GET /logs.json
+
   def index
     @logs = Log.all
     @logs = @logs.map do |log|
@@ -28,6 +29,7 @@ class LogsController < ApplicationController
     @items = Item.all
     @borrowers = User.all
     @log = Log.new
+    @tomorrow = Date.current.tomorrow
   end
 
   # GET /logs/1/edit
@@ -47,7 +49,6 @@ class LogsController < ApplicationController
   # POST /logs.json
   def create
     @log = Log.new(log_params)
-    puts params[:due_date]
 
     # Current user checks out
     if current_user
