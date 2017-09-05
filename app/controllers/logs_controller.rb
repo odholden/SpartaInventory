@@ -11,7 +11,6 @@ class LogsController < ApplicationController
     @logs = Log.all
     @logs = @logs.map do |log|
       populate_log log
-    @date
     end
   end
 
