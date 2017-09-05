@@ -108,6 +108,11 @@ class LogsController < ApplicationController
       return log
     end
 
+    # check if item is overdue
+    def overdue?
+      @log.due_date < Time.now
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params
       params.require(:log).permit(:item_id, :return_date, :borrower_id, :returned_to_id, :lender_id)
