@@ -14,6 +14,10 @@ class ItemsController < ApplicationController
     end
 
     @available = @items.length - @out 
+
+    @items = @items.map do |item|
+      populate_item item
+    end
   end
 
   # GET /items/1
@@ -69,6 +73,15 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def populate_item item
+
+      # populate the user info
+      item.lender = User.find item.logs.last.lender_id
+      item.borrower = User.find item.logs.last.borrower_id
+
+      return item
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.

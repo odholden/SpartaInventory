@@ -20,6 +20,8 @@
                 <tr>
                   <th>Item id</th>
                   <th>Description</th>
+                  <th>Lender</th>
+                  <th>Borrower</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -29,10 +31,15 @@
               <th><%= item.id %></th> 
               <th><a href="<%= edit_item_path item %>"><%= item.description %></a></th>   
               <% if item.current %>
+                <th><%= item.try(:lender).try(:name) %></th>
+                <th><%= item.try(:borrower).try(:name) %></th>
                 <th class="checked-out">
                   <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %></th>
               <% else %>
+                <th></th>
+                <th></th>
                 <th class="available">Available</th>
+                <!-- Shows availability? -->
               <% end %>
                 <th><%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></th>
             </tr>
