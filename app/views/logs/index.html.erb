@@ -10,6 +10,7 @@
                 <th>Borrower</th>
                 <th>Returned to</th>
                 <th>Return date</th>
+                <th>Due Date</th>
                 <th colspan="3"></th>
               </tr>
             </thead>
@@ -21,7 +22,9 @@
                   <td><%= log.try(:lender).try(:name) %></td>
                   <td><%= log.try(:borrower).try(:name) %></td>
                   <td><%= log.try(:returned_to).try(:name) %></td>
-                  <td><%= log.try(:return_date) %></td>
+                  <td><%= log.try(:return_date)%></td>
+                  <!-- new Due Date Column Added -->
+                  <td><%= log.try(:due_date)%></td>
                   <td>
                     <% if !log.returned_to %>
                       <%= link_to 'Check in', checkin_log_path(log), data: { confirm: 'Are you sure?' } %></td>
