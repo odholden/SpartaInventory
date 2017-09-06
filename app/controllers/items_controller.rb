@@ -7,16 +7,14 @@ class ItemsController < ApplicationController
   def index
     @items = Item.order(:id)
     @out = @items.to_a.reduce(0) do |total , item|
-
       if item.current != nil then total += 1 end
       total
     end
 
     @available = @items.length - @out 
-
     # populates items to contain the names of borrowers and lenders
     @items = @items.map do |item|
-      populate_item item 
+      populate_item item
     end
   end
 
@@ -38,7 +36,6 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-    puts @item
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -93,6 +90,7 @@ class ItemsController < ApplicationController
       if item.current
         item.current.lender = User.find item.logs.last.lender_id
         item.current.borrower = User.find item.logs.last.borrower_id
+  
       end
 
       return item

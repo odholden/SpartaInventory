@@ -7,6 +7,7 @@ class LogsController < ApplicationController
 
   # GET /logs
   # GET /logs.json
+
   def index
     @logs = Log.all
     @logs = @logs.map do |log|
@@ -28,6 +29,7 @@ class LogsController < ApplicationController
     @items = Item.all
     @borrowers = User.all
     @log = Log.new
+    @tomorrow = Date.current.tomorrow
   end
 
   # GET /logs/1/edit
@@ -108,7 +110,7 @@ class LogsController < ApplicationController
       
       return log
     end
-
+   
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params
       params.require(:log).permit(:item_id, :return_date, :borrower_id, :returned_to_id, :lender_id, :due_date)
