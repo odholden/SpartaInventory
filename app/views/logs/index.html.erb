@@ -22,9 +22,11 @@
                   <td><%= log.try(:borrower).try(:name) %></td>
                   <td><%= log.try(:returned_to).try(:name) %></td>
                   <td><%= log.try(:return_date)%></td>
+                  <td><%= log.try(:due_date)%></td>
                   <td>
                     <% if !log.returned_to %>
-                      <%= link_to 'Check in', checkin_log_path(log), data: { confirm: 'Are you sure?' } %></td>
+                      <%= link_to 'Check in', checkin_log_path(log), data: { confirm: 'Are you sure?' } %>
+                  </td>
                     <% else %>
                       Returned
                     <% end %>
