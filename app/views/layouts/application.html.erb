@@ -23,6 +23,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
+            <li><a href="<%=new_academy_path%>">New Academy</a></li>
             <li><a href="#">Welcome , <%= current_user.name %></a></li>
             <li><a href="<%= logout_path %>">Logout</a></li>
           <% else %>
