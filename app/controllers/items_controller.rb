@@ -85,12 +85,11 @@ class ItemsController < ApplicationController
         params.require(:item).permit(:description, :serial, :academy_id)
     end
     # Populates item with lender and buyer ids
-    def populate_item item 
+    def populate_item item
 
       if item.current
         item.current.lender = User.find item.logs.last.lender_id
         item.current.borrower = User.find item.logs.last.borrower_id
-  
       end
 
       return item
