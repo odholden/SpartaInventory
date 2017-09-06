@@ -27,7 +27,8 @@
                   <td><%= log.try(:due_date)%></td> 
                   <td>
                     <% if !log.returned_to %>
-                      <%= link_to 'Check in', checkin_log_path(log), data: { confirm: 'Are you sure?' } %></td>
+                      <%= link_to 'Check in', checkin_log_path(log), data: { confirm: 'Are you sure?' } %>
+                  </td>
                     <% else %>
                       Returned
                     <% end %>
