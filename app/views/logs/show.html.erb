@@ -9,6 +9,7 @@
           <th>Borrower</th>
           <th>Item</th>
           <th>Date Taken</th>
+          <th>Due Date</th>
           <th>Returned By</th>
           <th>Date Returned</th>
         </tr>
@@ -22,6 +23,7 @@
            <td><%= @log.try(:borrower).try(:name) %></td>
            <td><%= @log.item.description %></td>
            <td><%= @log.created_at %></td>
+           <td><%=@log.try(:due_date)%></td>
            <td><%= @log.returned_to.try(:name) %></td>
            <td><%= @log.return_date %></td>
           </tr>
