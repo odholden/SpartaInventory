@@ -1,6 +1,5 @@
 class Academy < ApplicationRecord
 	validates :name, presence: true
-	def new
-		render plain:"hello"
-	end
+	has_many :items
+	
 end
