@@ -22,6 +22,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :academy_id %>
+    <%= f.collection_select :academy_id, Academy.all, :id, :name %>
+  </div>
+
+  <div class="form-group">
     <%= f.submit "Save Item" , class: "btn btn-lg btn-success btn-block" %>
   </div>
 
