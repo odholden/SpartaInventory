@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   get 'logs/:id/checkin' , to: 'logs#checkin', as: 'checkin_log'
 
   resources :items
+  resources :academies
+  
 
 end
