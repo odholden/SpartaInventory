@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :users
+
+  resources :logs
+
+  resources :items
+
   root 'items#index'
 
   get '/login', to: 'session#login'
@@ -10,14 +16,13 @@ Rails.application.routes.draw do
 
   get '/notify', to: 'notify#message'
 
-  resources :users
-
-  resources :logs
-
   get 'logs/:id/checkin' , to: 'logs#checkin', as: 'checkin_log'
 
-  resources :items
-  resources :academies
+  get '/academies/new', to: 'academies#new'
+
+  post '/academies', to: 'academies#create'
+
+  delete '/academies/:id', to: 'academies#delete'
   
 
 end

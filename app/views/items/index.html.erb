@@ -49,7 +49,7 @@
               <% if item.current %>
                 <th><%= item.current.lender.name %></th>
                 <th><%= item.current.borrower.name %></th>
-                <%if item.current.due_date.to_date < Date.current.to_date%>
+                <%if item.current.due_date.to_date < @date.to_date%>
                   <th class="due"><%= item.current.due_date%></th>
                 <%else%>
                   <th><%= item.current.due_date%></th>

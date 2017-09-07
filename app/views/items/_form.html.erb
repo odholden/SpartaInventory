@@ -23,7 +23,7 @@
 
   <div class="form-group">
     <%= f.label :academy_id %>
-    <%= f.collection_select :academy_id, Academy.all, :id, :name %>
+    <%= f.collection_select :academy_id, @academies, :id, :name %>
   </div>
 
   <div class="form-group">

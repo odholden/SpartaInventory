@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.order(:id)
     @academies = Academy.all
+    @date = Date.current
     @out = @items.to_a.reduce(0) do |total , item|
       if item.current != nil then total += 1 end
       total
@@ -27,6 +28,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @academies = Academy.all
   end
 
   # GET /items/1/edit
