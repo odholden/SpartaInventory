@@ -1,24 +1,9 @@
 class AcademiesController < ApplicationController
   before_action :set_academy, only: [:show, :edit, :update, :destroy]
 
-  # GET /academies
-  # GET /academies.json
-  def index
-    @academies = Academy.all
-  end
-
-  # GET /academies/1
-  # GET /academies/1.json
-  def show
-  end
-
   # GET /academies/new
   def new
     @academy = Academy.new
-  end
-
-  # GET /academies/1/edit
-  def edit
   end
 
   # POST /academies
@@ -28,24 +13,10 @@ class AcademiesController < ApplicationController
 
     respond_to do |format|
       if @academy.save
-        format.html { redirect_to @academy, notice: 'Academy was successfully created.' }
+        format.html { redirect_to items_url, notice: 'Academy was successfully created.' }
         format.json { render :show, status: :created, location: @academy }
       else
         format.html { render :new }
-        format.json { render json: @academy.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /academies/1
-  # PATCH/PUT /academies/1.json
-  def update
-    respond_to do |format|
-      if @academy.update(academy_params)
-        format.html { redirect_to @academy, notice: 'Academy was successfully updated.' }
-        format.json { render :show, status: :ok, location: @academy }
-      else
-        format.html { render :edit }
         format.json { render json: @academy.errors, status: :unprocessable_entity }
       end
     end
