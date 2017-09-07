@@ -22,6 +22,8 @@
                   <th>Description</th>
                   <th>Lender</th>
                   <th>Borrower</th>
+                  <th>Academy</th>
+                  <th>Due Date</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -33,11 +35,19 @@
               <% if item.current %>
                 <th><%= item.current.lender.name %></th>
                 <th><%= item.current.borrower.name %></th>
+                <th><%= item.academy.try(:name) %></th>
+                <%if item.current.due_date.to_date < @date.to_date%>
+                  <th class="due"><%= item.current.due_date%></th>
+                <%else%>
+                  <th><%= item.current.due_date%></th>
+                <%end%>
                 <th class="checked-out">
                   <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %></th>
               <% else %>
                 <!-- Leaves empty space where lender and borrower should be -->
                 <th></th>
+                <th></th>
+                <th><%= item.academy.try(:name) %></th>
                 <th></th>
                 <th class="available">Available</th>
                 <!-- Shows availability? -->

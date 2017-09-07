@@ -6,17 +6,18 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.order(:id)
-    @out = @items.to_a.reduce(0) do |total , item|
+    @academies = Academy.all
+    @date = Date.current
 
+    @out = @items.to_a.reduce(0) do |total , item|
       if item.current != nil then total += 1 end
       total
     end
 
     @available = @items.length - @out 
-
     # populates items to contain the names of borrowers and lenders
     @items = @items.map do |item|
-      populate_item item 
+      populate_item item
     end
   end
 
@@ -28,6 +29,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @academies = Academy.all
   end
 
   # GET /items/1/edit
@@ -84,7 +86,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-        params.require(:item).permit(:description, :serial)
+        params.require(:item).permit(:description, :serial, :academy_id)
     end
     # Populates item with lender and buyer ids
     def populate_item item 
