@@ -17,3 +17,6 @@
 //= require turbolinks
 //= require_tree .
 
+$('#all').on('click', function () {
+    console.log("dsdasdsada");
+})
