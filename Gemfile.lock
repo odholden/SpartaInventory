@@ -63,6 +63,10 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     erubis (2.7.0)
     et-orbi (1.0.5)
       tzinfo
@@ -192,6 +196,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  dotenv-rails
   httparty (~> 0.13.7)
   jbuilder (~> 2.5)
   jquery-rails
