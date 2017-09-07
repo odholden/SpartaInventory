@@ -6,7 +6,8 @@ SLACK_NOTIFIER = Slack::Notifier.new(
 
 scheduler = Rufus::Scheduler::singleton
 
-scheduler.every '24h' do 
+# This is configured for GMT 3PM .cron uses UTC
+scheduler.cron '00 14 * * *' do
 	# Get all the items from the database
 	# If item is overdue, ping
 	items = Item.all

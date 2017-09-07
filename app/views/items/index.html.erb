@@ -14,21 +14,6 @@
               Out : <%= @out %>
             </div>
           </div>
-          <div>
-            <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-primary active">
-                <input type="radio" name="options" id="all" autocomplete="off" checked> All
-              </label>
-
-              <% @academies.each do |academy|%>
-                <label class="btn btn-primary">
-                  <input type="radio" name="options" id="<%= academy.id %>" autocomplete="off"><%=academy.name%>
-                </label>
-
-              <%end%>
-            </div>
-
-          </div>
 
           <table class="table table-hover">
              <thead>
