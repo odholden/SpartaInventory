@@ -40,6 +40,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    @academies = Academy.all
     @item = Item.new(item_params)
     respond_to do |format|
       if @item.save
