@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @academies = Academy.all
   end
 
   # POST /items
