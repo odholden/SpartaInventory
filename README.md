@@ -14,7 +14,19 @@
 
 ## The Task
 
-As a team we were given the task of adding features and fixing bugs for a web application that is curren
+As a team of 4 developers we were given the task of adding features and fixing bugs for a web application that is currently in use by staff at Sparta Global. 
+
+## The Brief
+
+### Sprint 1 
+1. Validation - Item cannot be added unless the description field is populated.
+2. Fix error page when item is checked out.
+3. Add two columns in the item index page for item lender and borrower.
+4. Identify when item was overdue and send a notification if item is overdue.
+5. Highlight due date on item index page.
+
+### Sprint 2
+1. 
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
