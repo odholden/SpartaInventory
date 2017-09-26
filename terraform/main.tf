@@ -1,5 +1,6 @@
 provider "aws" {
   region  = "eu-west-2"
+  
 }
 
 resource "aws_vpc" "inventory-vpc" {
@@ -11,7 +12,7 @@ resource "aws_vpc" "inventory-vpc" {
 
 resource "aws_subnet" "elb-subnet" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
-  cidr_block = "0.0.0.0/0"
+  cidr_block = "11.3.3.0/24"
   map_public_ip_on_launch = true
 }
 
@@ -108,12 +109,34 @@ resource "aws_security_group" "inventory-sg-db"  {
   }
 }
 
-# resource "aws_elb" "elb" {
-#   name = "inventory-elb"
-#   subnets = ["${aws_subnet.elb-subnet.id}", 
-#             "${aws_subnet.inventory-web.id}",
-#             "${aws_subnet.inventory-db.id}"]
-# }
+resource "aws_elb" "elb" {
+  name = "inventory-elb"
+  subnets = ["${aws_subnet.elb-subnet.id}", 
+           "${aws_subnet.inventory-web.id}",
+           "${aws_subnet.inventory-db.id}"]
+  security_groups= ["${aws_security_group.inventory-sg-app.id}",
+                    "${aws_security_group.inventory-sg-db.id}",
+                    "${aws_security_group.inventory-sg-elb.id}"]
+  availability_zones = ["eu-west-1"]
+
+  listener {
+    instance_port = 3000
+    instance_protocol = "http"
+    lb_port = 80
+    lb_protocol = "http"
+  }
+
+  health_check{
+    healthy_threshold = 3
+    unhealthy_threshold = 2
+    interval = 30
+    target = "HTTP:3000/"
+    timeout = 3
+  }
+  
+  instances = ["${aws_instance.inventory-web.id}"] 
+
+}
 
 resource "aws_instance" "inventory-web" {
   ami =   "ami-996372fd"
