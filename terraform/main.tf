@@ -117,7 +117,7 @@ resource "aws_elb" "elb" {
   security_groups= ["${aws_security_group.inventory-sg-app.id}",
                     "${aws_security_group.inventory-sg-db.id}",
                     "${aws_security_group.inventory-sg-elb.id}"]
-  availability_zones = ["eu-west-1"]
+  availability_zones = ["eu-west-2"]
 
   listener {
     instance_port = 3000
