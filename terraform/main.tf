@@ -47,7 +47,7 @@ resource "aws_security_group" "inventory-sg-elb"  {
   egress{
     from_port       = 3000
     to_port         = 3000
-    protocol        = "-1"
+    protocol        = "0"
     cidr_blocks     = ["0.0.0.0/0"]
   }
   tags {
