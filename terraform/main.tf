@@ -8,6 +8,13 @@ resource "aws_vpc" "inventory-vpc" {
   }
   cidr_block = "11.3.0.0/16"
 }
+
+resource "aws_subnet" "elb-subnet" {
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
+  cidr_block = "0.0.0.0/0"
+  map_public_ip_on_launch = true
+}
+
 resource "aws_subnet" "inventory-web" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
   cidr_block = "11.3.1.0/24"
@@ -25,6 +32,13 @@ resource "aws_subnet" "inventory-db" {
     Name = "inventory-db"
   }
 }
+
+# resource "aws_elb" "elb" {
+#   name = "inventory-elb"
+#   subnets = ["${aws_subnet.elb-subnet.id}", 
+#             "${aws_subnet.inventory-web.id}",
+#             "${aws_subnet.inventory-db.id}"]
+# }
 
 resource "aws_instance" "inventory-web" {
   ami =   "ami-996372fd"
