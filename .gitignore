@@ -1,2 +1,7 @@
 v3.0/
-.terraform/
+/terraform/.terraform/
+/.vagrant/
+/terraform/terraform.tfstate
+/terraform/terraform.tfstate.backup
+/Berksfile.lock
+/log/development.log
