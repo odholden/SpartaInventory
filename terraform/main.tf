@@ -8,6 +8,23 @@ resource "aws_vpc" "inventory-vpc" {
   }
   cidr_block = "11.3.0.0/16"
 }
+resource "aws_subnet" "inventory-web" {
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
+  cidr_block = "11.3.1.0/24"
+  map_public_ip_on_launch = false
+  tags {
+    Name = "inventory-app"
+  }
+}
+
+resource "aws_subnet" "inventory-db" {
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
+  cidr_block = "11.3.2.0/24"
+  map_public_ip_on_launch = false
+  tags {
+    Name = "inventory-db"
+  }
+}
 
 resource "aws_instance" "inventory-web" {
   ami =   "ami-996372fd"
