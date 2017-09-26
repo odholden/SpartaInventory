@@ -46,7 +46,7 @@ resource "aws_db_instance" "inventory-db" {
   allocated_storage = 8
   name = "spartaInventoryDb"
   username ="inventory"
-  password =  ${random_string.result}
+  password =  "${random_string.password.result}"
   
   tags {
     Name = "db-inventory"
