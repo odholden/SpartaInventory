@@ -5,3 +5,4 @@ v3.0/
 /terraform/terraform.tfstate.backup
 /Berksfile.lock
 /log/development.log
+/.DS_Store
