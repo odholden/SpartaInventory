@@ -10,10 +10,33 @@ resource "aws_vpc" "inventory-vpc" {
   cidr_block = "11.3.0.0/16"
 }
 
+resource "aws_internet_gateway" "default" {
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
+}
+
+resource "aws_route_table" "local" {
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
+}
+
+resource "aws_route" "internet_access" {
+  route_table_id         = "${aws_vpc.inventory-vpc.main_route_table_id}"
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = "${aws_internet_gateway.default.id}"
+}
+
+resource "aws_route_table_association" "db" {
+  subnet_id = "${aws_subnet.inventory-db.id}"
+  route_table_id = "${aws_route_table.local.id}"
+}
+
 resource "aws_subnet" "elb-subnet" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
   cidr_block = "11.3.3.0/24"
   map_public_ip_on_launch = true
+  tags {
+    Name = "inventory-elb"
+  }
+
 }
 
 resource "aws_subnet" "inventory-web" {
@@ -34,9 +57,9 @@ resource "aws_subnet" "inventory-db" {
   }
 }
 resource "aws_security_group" "inventory-sg-elb"  {
-  name ="inventory-sg-elb"
+  name = "inventory-sg-elb"
   description = "Allow all inbound traffic through port 80 and 443."
-  vpc_id ="${aws_vpc.inventory-vpc.id}"
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
 
   ingress{
     from_port       = 80
@@ -64,9 +87,9 @@ resource "aws_security_group" "inventory-sg-elb"  {
 }
 
 resource "aws_security_group" "inventory-sg-app"  {
-  name ="inventory-app"
+  name = "inventory-app"
   description = "Allow all inbound traffic through port 3000 only"
-  vpc_id ="${aws_vpc.inventory-vpc.id}"
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
 
   ingress{
     from_port       = 3000
@@ -87,9 +110,9 @@ resource "aws_security_group" "inventory-sg-app"  {
 }
 
 resource "aws_security_group" "inventory-sg-db"  {
-  name ="inventory-db"
+  name = "inventory-db"
   description = "Allow all inbound traffic through port 5432 only"
-  vpc_id ="${aws_vpc.inventory-vpc.id}"
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
 
   ingress{
     from_port       = 5432
@@ -111,13 +134,9 @@ resource "aws_security_group" "inventory-sg-db"  {
 
 resource "aws_elb" "elb" {
   name = "inventory-elb"
-  subnets = ["${aws_subnet.elb-subnet.id}", 
-           "${aws_subnet.inventory-web.id}",
-           "${aws_subnet.inventory-db.id}"]
-  security_groups= ["${aws_security_group.inventory-sg-app.id}",
-                    "${aws_security_group.inventory-sg-db.id}",
-                    "${aws_security_group.inventory-sg-elb.id}"]
-  availability_zones = ["eu-west-2"]
+  subnets = ["${aws_subnet.inventory-web.id}"]
+  security_groups = ["${aws_security_group.inventory-sg-elb.id}"]
+  # availability_zones = ["eu-west-2a"]
 
   listener {
     instance_port = 3000
@@ -126,7 +145,7 @@ resource "aws_elb" "elb" {
     lb_protocol = "http"
   }
 
-  health_check{
+  health_check {
     healthy_threshold = 3
     unhealthy_threshold = 2
     interval = 30
@@ -134,15 +153,14 @@ resource "aws_elb" "elb" {
     timeout = 3
   }
   
-  instances = ["${aws_instance.inventory-web.id}"] 
+  instances = ["${aws_instance.inventory-web.id}"]
 
 }
 
 resource "aws_instance" "inventory-web" {
   ami =   "ami-996372fd"
   instance_type = "t2.micro"
-  
-  
+  subnet_id = "${aws_subnet.inventory-web.id}"
   tags {
     Name = "web-inventory"
   }
@@ -156,6 +174,7 @@ resource "random_string" "password" {
 resource "aws_db_instance" "inventory-db" {
   engine               = "postgres"
   instance_class =  "db.t2.micro"
+  # db_subnet_group_name = "inventory-db"
   allocated_storage = 8
   name = "spartaInventoryDb"
   username ="inventory"
