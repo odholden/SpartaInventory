@@ -158,12 +158,20 @@ resource "aws_elb" "elb" {
 }
 
 resource "aws_instance" "inventory-web" {
-  ami =   "ami-996372fd"
+  ami =   "ami-20a4b744"
   instance_type = "t2.micro"
   subnet_id = "${aws_subnet.inventory-web.id}"
   tags {
     Name = "web-inventory"
   }
+
+   user_data = "${data.template_file.init_script.rendered}"
+
+  depends_on = ["aws_db_instance.inventory-db"]
+}
+
+data "template_file" "init_script" {
+  template = "${file("${path.module}/init.sh")}"
 }
 
 resource "random_string" "password" {
@@ -174,6 +182,7 @@ resource "random_string" "password" {
 resource "aws_db_instance" "inventory-db" {
   engine               = "postgres"
   instance_class =  "db.t2.micro"
+  ami = "ami-a4a5b6c0"
   # db_subnet_group_name = "inventory-db"
   allocated_storage = 8
   name = "spartaInventoryDb"
