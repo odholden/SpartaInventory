@@ -29,20 +29,20 @@ resource "aws_route_table_association" "db" {
   route_table_id = "${aws_route_table.local.id}"
 }
 
-resource "aws_subnet" "elb-subnet" {
-  vpc_id = "${aws_vpc.inventory-vpc.id}"
-  cidr_block = "11.3.3.0/24"
-  map_public_ip_on_launch = true
-  tags {
-    Name = "inventory-elb"
-  }
+# resource "aws_subnet" "elb-subnet" {
+#   vpc_id = "${aws_vpc.inventory-vpc.id}"
+#   cidr_block = "11.3.3.0/24"
+#   map_public_ip_on_launch = true
+#   tags {
+#     Name = "inventory-elb"
+#   }
 
-}
+# }
 
 resource "aws_subnet" "inventory-web" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
   cidr_block = "11.3.1.0/24"
-  map_public_ip_on_launch = false
+  map_public_ip_on_launch = true
   tags {
     Name = "inventory-app"
   }
@@ -56,35 +56,35 @@ resource "aws_subnet" "inventory-db" {
     Name = "inventory-db"
   }
 }
-resource "aws_security_group" "inventory-sg-elb"  {
-  name = "inventory-sg-elb"
-  description = "Allow all inbound traffic through port 80 and 443."
-  vpc_id = "${aws_vpc.inventory-vpc.id}"
+# resource "aws_security_group" "inventory-sg-elb"  {
+#   name = "inventory-sg-elb"
+#   description = "Allow all inbound traffic through port 80 and 443."
+#   vpc_id = "${aws_vpc.inventory-vpc.id}"
 
-  ingress{
-    from_port       = 80
-    to_port         = 80
-    protocol        = "tcp"
-    cidr_blocks     = ["0.0.0.0/0"]
-  }
+#   ingress{
+#     from_port       = 80
+#     to_port         = 80
+#     protocol        = "tcp"
+#     cidr_blocks     = ["0.0.0.0/0"]
+#   }
 
-  ingress{
-    from_port       = 443
-    to_port         = 443
-    protocol        = "tcp"
-    cidr_blocks     = ["0.0.0.0/0"]
-  }
+#   ingress{
+#     from_port       = 443
+#     to_port         = 443
+#     protocol        = "tcp"
+#     cidr_blocks     = ["0.0.0.0/0"]
+#   }
 
-  egress{
-    from_port       = 3000
-    to_port         = 3000
-    protocol        = "0"
-    cidr_blocks     = ["0.0.0.0/0"]
-  }
-  tags {
-    Name = "inventory-sg-elb"
-  }
-}
+#   egress{
+#     from_port       = 3000
+#     to_port         = 3000
+#     protocol        = "0"
+#     cidr_blocks     = ["0.0.0.0/0"]
+#   }
+#   tags {
+#     Name = "inventory-sg-elb"
+#   }
+# }
 
 resource "aws_security_group" "inventory-sg-app"  {
   name = "inventory-app"
@@ -95,7 +95,8 @@ resource "aws_security_group" "inventory-sg-app"  {
     from_port       = 3000
     to_port         = 3000
     protocol        = "tcp"
-    security_groups = ["${aws_security_group.inventory-sg-elb.id}"]
+    # security_groups = ["${aws_security_group.inventory-sg-elb.id}"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress{
@@ -132,30 +133,30 @@ resource "aws_security_group" "inventory-sg-db"  {
   }
 }
 
-resource "aws_elb" "elb" {
-  name = "inventory-elb"
-  subnets = ["${aws_subnet.inventory-web.id}"]
-  security_groups = ["${aws_security_group.inventory-sg-elb.id}"]
-  # availability_zones = ["eu-west-2a"]
+# resource "aws_elb" "elb" {
+#   name = "inventory-elb"
+#   subnets = ["${aws_subnet.inventory-web.id}"]
+#   security_groups = ["${aws_security_group.inventory-sg-elb.id}"]
+#   # availability_zones = ["eu-west-2a"]
 
-  listener {
-    instance_port = 3000
-    instance_protocol = "http"
-    lb_port = 80
-    lb_protocol = "http"
-  }
+#   listener {
+#     instance_port = 3000
+#     instance_protocol = "http"
+#     lb_port = 80
+#     lb_protocol = "http"
+#   }
 
-  health_check {
-    healthy_threshold = 3
-    unhealthy_threshold = 2
-    interval = 30
-    target = "HTTP:3000/"
-    timeout = 3
-  }
+#   health_check {
+#     healthy_threshold = 6
+#     unhealthy_threshold = 6
+#     interval = 90
+#     target = "HTTP:3000/"
+#     timeout = 30
+#   }
   
-  instances = ["${aws_instance.inventory-web.id}"]
+#   instances = ["${aws_instance.inventory-web.id}"]
 
-}
+# }
 
 resource "aws_instance" "inventory-web" {
   ami =   "ami-20a4b744"
@@ -182,7 +183,7 @@ resource "random_string" "password" {
 resource "aws_db_instance" "inventory-db" {
   engine               = "postgres"
   instance_class =  "db.t2.micro"
-  ami = "ami-a4a5b6c0"
+  # ami = "ami-a4a5b6c0"
   # db_subnet_group_name = "inventory-db"
   allocated_storage = 8
   name = "spartaInventoryDb"
