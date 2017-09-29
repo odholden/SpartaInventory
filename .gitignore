@@ -7,3 +7,4 @@ v3.0/
 /log/development.log
 /.DS_Store
 /terraform/.terraform.tfstate.lock.info
+/cookbooks
