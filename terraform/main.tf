@@ -10,6 +10,39 @@ resource "aws_vpc" "inventory-vpc" {
   }
 }
 
+resource "aws_launch_configuration" "asg-config" {
+  name = "asg-launch"
+  image_id = "ami-d24654b6"
+  instance_type = "t2.micro"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_autoscaling_group" "inventory-asg" {
+  availability_zones = ["eu-west-2a"]
+  load_balancers = ["${aws_elb.elb.id}"]
+  name = "inventory-scalegroup"
+  min_size = 2
+  max_size = 5
+  launch_configuration = "${aws_launch_configuration.asg-config.id}"
+}
+
+resource "aws_autoscaling_policy" "scale-up" {
+  name = "autoscale-up"
+  scaling_adjustment = 1
+  adjustment_type = "ChangeInCapacity"
+  autoscaling_group_name = "${aws_autoscaling_group.inventory-asg.name}"
+}
+
+resource "aws_autoscaling_policy" "scale-down" {
+  name = "autoscale-down"
+  scaling_adjustment = -1
+  adjustment_type = "ChangeInCapacity"
+  autoscaling_group_name = "${aws_autoscaling_group.inventory-asg.name}"
+}
+
 resource "aws_route_table" "public" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
 
@@ -240,7 +273,7 @@ data "template_file" "init_script" {
 
 resource "random_string" "password" {
   length = 16
-  special = true
+  special = false
 }
 resource "aws_db_subnet_group" "inventory-db-group" {
   name = "main"
