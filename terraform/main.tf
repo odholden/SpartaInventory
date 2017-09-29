@@ -10,28 +10,44 @@ resource "aws_vpc" "inventory-vpc" {
   }
 }
 
+resource "aws_route_table" "public" {
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
+
+  route {
+    # Route for the ELB
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${aws_internet_gateway.default.id}"
+  }
+
+  tags {
+    Name = "public"
+  }
+}
+
+resource "aws_route_table" "semi-private" {
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
+
+  route {
+    # Route for the ELB
+    cidr_block = "0.0.0.0/0"
+    nat_gateway_id = "${aws_nat_gateway.inventory-nat-gw.id}"
+  }
+
+  tags {
+    Name = "semi-private"
+  }
+}
+
+resource "aws_default_route_table" "private" {
+  default_route_table_id = "${aws_vpc.inventory-vpc.default_route_table_id}"
+
+  tags {
+    Name = "private"
+  }
+}
+
 resource "aws_internet_gateway" "default" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
-}
-
-resource "aws_route_table" "local" {
-  vpc_id = "${aws_vpc.inventory-vpc.id}"
-}
-
-resource "aws_route" "internet_access" {
-  route_table_id         = "${aws_vpc.inventory-vpc.main_route_table_id}"
-  destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = "${aws_internet_gateway.default.id}"
-}
-
-resource "aws_route_table_association" "db-a" {
-  subnet_id = "${aws_subnet.inventory-db-a.id}"
-  route_table_id = "${aws_route_table.local.id}"
-}
-
-resource "aws_route_table_association" "db-b" {
-  subnet_id = "${aws_subnet.inventory-db-b.id}"
-  route_table_id = "${aws_route_table.local.id}"
 }
 
 resource "aws_subnet" "elb-subnet" {
@@ -43,7 +59,16 @@ resource "aws_subnet" "elb-subnet" {
   tags {
     Name = "inventory-elb"
   }
+}
 
+resource "aws_route_table_association" "elb" {
+  subnet_id = "${aws_subnet.elb-subnet.id}"
+  route_table_id = "${aws_route_table.public.id}"
+}
+
+resource "aws_route_table_association" "app" {
+  subnet_id = "${aws_subnet.inventory-web.id}"
+  route_table_id = "${aws_route_table.semi-private.id}"
 }
 
 resource "aws_subnet" "inventory-web" {
@@ -182,6 +207,14 @@ resource "aws_elb" "elb" {
     Name = "inventory-elb"
   }
  }
+
+resource "aws_eip" "inventory-nat-eip" {
+}
+
+resource "aws_nat_gateway" "inventory-nat-gw" {
+  allocation_id = "${aws_eip.inventory-nat-eip.id}"
+  subnet_id     = "${aws_subnet.elb-subnet.id}"
+}
 
 resource "aws_instance" "inventory-web" {
   ami =   "ami-d24654b6"
