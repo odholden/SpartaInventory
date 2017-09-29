@@ -232,7 +232,7 @@ data "template_file" "init_script" {
 
 resource "random_string" "password" {
   length = 16
-  special = true
+  special = false 
 }
 resource "aws_db_subnet_group" "inventory-db-group" {
   name = "main"
