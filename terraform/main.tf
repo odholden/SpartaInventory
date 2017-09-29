@@ -37,6 +37,7 @@ resource "aws_route_table_association" "db-b" {
 resource "aws_subnet" "elb-subnet" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
   cidr_block = "11.3.4.0/24"
+  availability_zone = "eu-west-2a"
   map_public_ip_on_launch = true
   tags {
     Name = "inventory-elb"
@@ -47,6 +48,7 @@ resource "aws_subnet" "elb-subnet" {
 resource "aws_subnet" "inventory-web" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
   cidr_block = "11.3.1.0/24"
+  availability_zone = "eu-west-2a"
   map_public_ip_on_launch = false
   tags {
     Name = "inventory-app"
@@ -108,11 +110,10 @@ resource "aws_security_group" "inventory-sg-app"  {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
 
   ingress{
-    from_port       = 0
-    to_port         = 0
-    protocol        = "-1"
-    # security_groups = ["${aws_security_group.inventory-sg-elb.id}"]
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port       = 3000
+    to_port         = 3000
+    protocol        = "tcp"
+    security_groups = ["${aws_security_group.inventory-sg-elb.id}"]
   }
 
   egress{
@@ -151,9 +152,9 @@ resource "aws_security_group" "inventory-sg-db"  {
 
 resource "aws_elb" "elb" {
   name = "inventory-elb"
-  subnets = ["${aws_subnet.elb-subnet.id}"]
+  subnets = ["${aws_subnet.elb-subnet.id}",]
   security_groups = ["${aws_security_group.inventory-sg-elb.id}"]
-  # availability_zones = ["eu-west-2a"]
+ 
 
   listener {
     instance_port = 3000
@@ -175,13 +176,8 @@ resource "aws_elb" "elb" {
   }
  }
 
-#  data "aws_db_instance" "endpoint" {
-#   db_instance_identifier= "spartaInventoryDb"
-#   endpoint = 
-# }
-
 resource "aws_instance" "inventory-web" {
-  ami =   "ami-df4052bb"
+  ami =   "ami-d24654b6"
   instance_type = "t2.micro"
   subnet_id = "${aws_subnet.inventory-web.id}"
   vpc_security_group_ids = ["${aws_security_group.inventory-sg-app.id}"]
@@ -224,8 +220,7 @@ resource "aws_db_instance" "inventory-db" {
   username ="inventory"
   password =  "${random_string.password.result}"
   vpc_security_group_ids = ["${aws_security_group.inventory-sg-db.id}"]
-  # multi_az = false
-  # apply_immediately = true
+  skip_final_snapshot = true
   tags {
     Name = "db-inventory"
   } 
