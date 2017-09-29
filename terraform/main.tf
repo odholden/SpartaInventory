@@ -24,14 +24,20 @@ resource "aws_route" "internet_access" {
   gateway_id             = "${aws_internet_gateway.default.id}"
 }
 
-resource "aws_route_table_association" "db" {
-  subnet_id = "${aws_subnet.inventory-db.id}"
+resource "aws_route_table_association" "db-a" {
+  subnet_id = "${aws_subnet.inventory-db-a.id}"
+  route_table_id = "${aws_route_table.local.id}"
+}
+
+resource "aws_route_table_association" "db-b" {
+  subnet_id = "${aws_subnet.inventory-db-b.id}"
   route_table_id = "${aws_route_table.local.id}"
 }
 
 resource "aws_subnet" "elb-subnet" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
-  cidr_block = "11.3.3.0/24"
+  cidr_block = "11.3.4.0/24"
+  availability_zone = "eu-west-2a"
   map_public_ip_on_launch = true
 
   tags {
@@ -43,6 +49,7 @@ resource "aws_subnet" "elb-subnet" {
 resource "aws_subnet" "inventory-web" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
   cidr_block = "11.3.1.0/24"
+  availability_zone = "eu-west-2a"
   map_public_ip_on_launch = false
 
   tags {
@@ -50,13 +57,24 @@ resource "aws_subnet" "inventory-web" {
   }
 }
 
-resource "aws_subnet" "inventory-db" {
+resource "aws_subnet" "inventory-db-a" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
   cidr_block = "11.3.2.0/24"
+  availability_zone = "eu-west-2a"
+  map_public_ip_on_launch = false
+  tags {
+    Name = "inventory-db-a"
+  }
+}
+
+resource "aws_subnet" "inventory-db-b" {
+  vpc_id = "${aws_vpc.inventory-vpc.id}"
+  cidr_block = "11.3.3.0/24"
+  availability_zone = "eu-west-2b"
   map_public_ip_on_launch = false
 
   tags {
-    Name = "inventory-db"
+    Name = "inventory-db-b"
   }
 }
 resource "aws_security_group" "inventory-sg-elb"  {
@@ -78,10 +96,10 @@ resource "aws_security_group" "inventory-sg-elb"  {
     cidr_blocks     = ["0.0.0.0/0"]
   }
 
-  egress {
-    from_port       = 3000
-    to_port         = 3000
-    protocol        = "0"
+  egress{
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
     cidr_blocks     = ["0.0.0.0/0"]
   }
 
@@ -140,7 +158,7 @@ resource "aws_security_group" "inventory-sg-db"  {
 
 resource "aws_elb" "elb" {
   name = "inventory-elb"
-  subnets = ["${aws_subnet.inventory-web.id}"]
+  subnets = ["${aws_subnet.elb-subnet.id}",]
   security_groups = ["${aws_security_group.inventory-sg-elb.id}"]
 
   listener {
@@ -151,24 +169,39 @@ resource "aws_elb" "elb" {
   }
 
   health_check {
-    healthy_threshold = 3
+    healthy_threshold = 2
     unhealthy_threshold = 2
     interval = 30
-    target = "HTTP:3000/"
-    timeout = 3
+    target = "HTTP:3000/login"
+    timeout = 15
   }
   
   instances = ["${aws_instance.inventory-web.id}"]
-
-}
+  
+  tags {
+    Name = "inventory-elb"
+  }
+ }
 
 resource "aws_instance" "inventory-web" {
-  ami =   "ami-996372fd"
+  ami =   "ami-d24654b6"
   instance_type = "t2.micro"
   subnet_id = "${aws_subnet.inventory-web.id}"
+  vpc_security_group_ids = ["${aws_security_group.inventory-sg-app.id}"]
 
   tags {
     Name = "web-inventory"
+  }
+
+  user_data = "${data.template_file.init_script.rendered}"
+
+  depends_on = ["aws_db_instance.inventory-db"]
+}
+
+data "template_file" "init_script" {
+  template = "${file("${path.module}/init.sh")}"
+  vars {
+    password = "${random_string.password.result}"
   }
 }
 
@@ -176,15 +209,27 @@ resource "random_string" "password" {
   length = 16
   special = true
 }
+resource "aws_db_subnet_group" "inventory-db-group" {
+  name = "main"
+  subnet_ids = ["${aws_subnet.inventory-db-a.id}", "${aws_subnet.inventory-db-b.id}"]
 
+  tags {
+    Name = "DB-SUBNET-GROUP"
+  }
+}
 resource "aws_db_instance" "inventory-db" {
   engine               = "postgres"
   instance_class =  "db.t2.micro"
+  identifier = "inventory-db-id"
+  # ami = "ami-a4a5b6c0"
+  db_subnet_group_name = "${aws_db_subnet_group.inventory-db-group.name}"
+
   allocated_storage = 8
   name = "spartaInventoryDb"
   username ="inventory"
   password =  "${random_string.password.result}"
-  
+  vpc_security_group_ids = ["${aws_security_group.inventory-sg-db.id}"]
+  skip_final_snapshot = true
   tags {
     Name = "db-inventory"
   } 
