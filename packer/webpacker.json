@@ -31,7 +31,7 @@
 		},
 		{
 			"type": "file",
-			"source": ".",
+			"source": "../",
 			"destination": "/home/ubuntu/app"
 
 		},
@@ -39,6 +39,10 @@
 			"type": "chef-solo",
 			"cookbook_paths": ["../cookbooks"],
 			"run_list":["rails-server::default"]
+		},
+		{
+			"type": "shell",
+			"inline": ["cd /home/ubuntu/app","bundle install"]
 		}
 
 	]
