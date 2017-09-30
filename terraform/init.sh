@@ -1,8 +1,7 @@
 #!/bin/bash 
-
-export DATABASE_NAME=spartaInventoryDb
-export HOST_URL='inventory-db-id.cqito2bn96lf.eu-west-2.rds.amazonaws.com'
-export DATABASE_USER=inventory
+export DATABASE_NAME='${database_name}'
+export HOST_URL='${endpoint}'
+export DATABASE_USER='${username}'
 export APP_DATABASE_PASSWORD='${password}'
 export RAILS_ENV=test 
 

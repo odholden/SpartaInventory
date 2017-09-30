@@ -11,9 +11,11 @@ resource "aws_vpc" "inventory-vpc" {
 }
 
 resource "aws_launch_configuration" "asg-config" {
-  name = "asg-launch"
+  name_prefix = "asg-launch"
   image_id = "ami-d24654b6"
   instance_type = "t2.micro"
+  user_data = "${data.template_file.init_script.rendered}"
+  security_groups = ["${aws_security_group.inventory-sg-app.id}"]
 
   lifecycle {
     create_before_destroy = true
@@ -24,9 +26,12 @@ resource "aws_autoscaling_group" "inventory-asg" {
   availability_zones = ["eu-west-2a"]
   load_balancers = ["${aws_elb.elb.id}"]
   name = "inventory-scalegroup"
-  min_size = 2
+  min_size = 1
   max_size = 5
+  desired_capacity = 1
+  vpc_zone_identifier = ["${aws_subnet.inventory-web.id}"]
   launch_configuration = "${aws_launch_configuration.asg-config.id}"
+  depends_on = ["aws_db_instance.inventory-db"]
 }
 
 resource "aws_autoscaling_policy" "scale-up" {
@@ -47,7 +52,6 @@ resource "aws_route_table" "public" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
 
   route {
-    # Route for the ELB
     cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.default.id}"
   }
@@ -61,7 +65,6 @@ resource "aws_route_table" "semi-private" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
 
   route {
-    # Route for the ELB
     cidr_block = "0.0.0.0/0"
     nat_gateway_id = "${aws_nat_gateway.inventory-nat-gw.id}"
   }
@@ -234,7 +237,7 @@ resource "aws_elb" "elb" {
     timeout = 15
   }
   
-  instances = ["${aws_instance.inventory-web.id}"]
+  # instances = ["${aws_instance.inventory-web.id}"]
   
   tags {
     Name = "inventory-elb"
@@ -249,25 +252,28 @@ resource "aws_nat_gateway" "inventory-nat-gw" {
   subnet_id     = "${aws_subnet.elb-subnet.id}"
 }
 
-resource "aws_instance" "inventory-web" {
-  ami =   "ami-d24654b6"
-  instance_type = "t2.micro"
-  subnet_id = "${aws_subnet.inventory-web.id}"
-  vpc_security_group_ids = ["${aws_security_group.inventory-sg-app.id}"]
+# resource "aws_instance" "inventory-web" {
+#   ami =   "ami-d24654b6"
+#   instance_type = "t2.micro"
+#   subnet_id = "${aws_subnet.inventory-web.id}"
+#   vpc_security_group_ids = ["${aws_security_group.inventory-sg-app.id}"]
 
-  tags {
-    Name = "web-inventory"
-  }
+#   tags {
+#     Name = "web-inventory"
+#   }
 
-  user_data = "${data.template_file.init_script.rendered}"
+#   user_data = "${data.template_file.init_script.rendered}"
 
-  depends_on = ["aws_db_instance.inventory-db"]
-}
+#   depends_on = ["aws_db_instance.inventory-db"]
+# }
 
 data "template_file" "init_script" {
   template = "${file("${path.module}/init.sh")}"
   vars {
-    password = "${random_string.password.result}"
+    password = "${aws_db_instance.inventory-db.password}"
+    endpoint = "${aws_db_instance.inventory-db.address}"
+    username = "${aws_db_instance.inventory-db.username}"
+    database_name = "${aws_db_instance.inventory-db.name}"
   }
 }
 
