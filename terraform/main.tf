@@ -1,4 +1,6 @@
 provider "aws" {
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
   region  = "eu-west-2" 
 }
 
@@ -9,6 +11,7 @@ resource "aws_vpc" "inventory-vpc" {
     Name = "Inventory - VPC"
   }
 }
+
 data "aws_ami" "web" {
   filter {
     name   = "state"
