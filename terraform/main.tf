@@ -4,6 +4,15 @@ provider "aws" {
   region  = "eu-west-2" 
 }
 
+variable "aws_access_key" {
+  type = "string"
+}
+
+variable "aws_secret_key" {
+  type = "string"
+}
+
+
 resource "aws_vpc" "inventory-vpc" {
   cidr_block = "11.3.0.0/16"
   
