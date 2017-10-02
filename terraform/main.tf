@@ -9,10 +9,24 @@ resource "aws_vpc" "inventory-vpc" {
     Name = "Inventory - VPC"
   }
 }
+data "aws_ami" "web" {
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+
+  filter {
+    name   = "name"
+    values = ["div-web-prod*"]
+  }
+
+  most_recent = true
+}
+
 
 resource "aws_launch_configuration" "asg-config" {
   name_prefix = "asg-launch"
-  image_id = "ami-d24654b6"
+  image_id = "${data.aws_ami.web.id}"
   instance_type = "t2.micro"
   user_data = "${data.template_file.init_script.rendered}"
   security_groups = ["${aws_security_group.inventory-sg-app.id}"]
