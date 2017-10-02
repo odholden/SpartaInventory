@@ -7,6 +7,7 @@ class LogsController < ApplicationController
 
   # GET /logs
   # GET /logs.json
+
   def index
     @logs = Log.order(created_at: :desc)
     @logs = @logs.map do |log|
@@ -17,6 +18,8 @@ class LogsController < ApplicationController
   # GET /logs/1
   # GET /logs/1.json
   def show
+    # Calles the populate log method but only for the one log
+    @log = populate_log @log
   end
 
   # GET /logs/new
@@ -26,6 +29,7 @@ class LogsController < ApplicationController
     @items = Item.all
     @borrowers = User.all
     @log = Log.new
+    @tomorrow = Date.current.tomorrow
   end
 
   # GET /logs/1/edit
@@ -45,6 +49,7 @@ class LogsController < ApplicationController
   # POST /logs.json
   def create
     @log = Log.new(log_params)
+    puts params[:due_date]
 
     # Current user checks out
     if current_user
@@ -90,7 +95,7 @@ class LogsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_log
       @log = Log.find(params[:id])
-      # @log = populate_log @log
+
     end
 
     def populate_log log
@@ -98,15 +103,16 @@ class LogsController < ApplicationController
       # populate the user info
       log.lender = User.find log.lender_id
       log.borrower = User.find log.borrower_id
+
       if log.returned_to_id
         log.returned_to = User.find log.returned_to_id
       end
-
+      
       return log
     end
-
+   
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params
-      params.require(:log).permit(:item_id, :return_date, :borrower_id, :returned_to_id, :lender_id)
+      params.require(:log).permit(:item_id, :return_date, :borrower_id, :returned_to_id, :lender_id, :due_date)
     end
 end

@@ -1,0 +1,22 @@
+<%= form_for(academy) do |f| %>
+  <% if academy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(academy.errors.count, "error") %> prohibited this academy from being saved:</h2>
+
+      <ul>
+      <% academy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name , class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Create", class: "btn btn-lg btn-success btn-block"  %>
+  </div>
+<% end %>

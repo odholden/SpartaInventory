@@ -2,44 +2,45 @@
   <div class="row">
     <div class="col-xs-12">
       <h1>Logs</h1>
-          <table class="table">
-            <thead>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Lender</th>
+              <th>Borrower</th>
+              <th>Returned to</th>
+              <th>Return date</th>
+              <th>Due Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @logs.each do |log| %>
               <tr>
-                <th>Item</th>
-                <th>Date</th>
-                <th>Lender</th>
-                <th>Borrower</th>
-                <th>Returned to</th>
-                <th>Return date</th>
-                <th colspan="3"></th>
+                <td><%= "#{log.item.id} - #{log.item.description}" %></td>
+                <td><%= log.try(:lender).try(:name) %></td>
+                <td><%= log.try(:borrower).try(:name) %></td>
+                <td><%= log.try(:returned_to).try(:name) %></td>
+                <td><%= log.try(:return_date)%></td>
+                <td><%= log.try(:due_date)%></td>
+                <td>
+                  <% if !log.returned_to %>
+                    <%= link_to 'Check in', checkin_log_path(log), data: { confirm: 'Are you sure?' } %>
+                  <% else %>
+                    Returned
+                  <% end %>
+                </td>
+                <td><%= link_to 'delete', log, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
               </tr>
-            </thead>
+            <% end %>
+          </tbody>
+        </table>
 
-            <tbody>
-              <% @logs.each do |log| %>
-                <tr>
-                  <td><%= "#{log.item.id} - #{log.item.description}" %></td>
-                  <td><%= log.try(:created_at) %></td>
-                  <td><%= log.try(:lender).try(:name) %></td>
-                  <td><%= log.try(:borrower).try(:name) %></td>
-                  <td><%= log.try(:returned_to).try(:name) %></td>
-                  <td><%= log.try(:return_date) %></td>
-                  <td>
-                    <% if !log.returned_to %>
-                      <%= link_to 'Check in', checkin_log_path(log), data: { confirm: 'Are you sure?' } %></td>
-                    <% else %>
-                      Returned
-                    <% end %>
-                  <td><%= link_to 'delete', log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-
-          <br>
-
-          <a class="btn btn-success largeBtn" href="<%= new_log_path %>" role="button">Checkout an item</a>
+      <br>
+      <a class="btn btn-success largeBtn" href="<%= new_log_path %>" role="button">Checkout an item</a>
     </div>
   </div>
 </div>
-
