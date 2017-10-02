@@ -74,6 +74,42 @@ resource "aws_autoscaling_policy" "scale-down" {
   autoscaling_group_name = "${aws_autoscaling_group.inventory-asg.name}"
 }
 
+resource "aws_cloudwatch_metric_alarm" "cpu-high" {
+  alarm_name          = "cpu-high"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/EC2"
+  period              = "120"
+  statistic           = "Average"
+  threshold           = "80"
+
+  dimensions {
+    AutoScalingGroupName = "${aws_autoscaling_group.inventory-asg.name}"
+  }
+
+  alarm_description = "This metric monitors ec2 cpu utilization"
+  alarm_actions     = ["${aws_autoscaling_policy.scale-up.arn}"]
+}
+
+resource "aws_cloudwatch_metric_alarm" "cpu-low" {
+  alarm_name          = "cpu-low"
+  comparison_operator = "LessThan"
+  evaluation_periods  = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/EC2"
+  period              = "120"
+  statistic           = "Average"
+  threshold           = "80"
+
+  dimensions {
+    AutoScalingGroupName = "${aws_autoscaling_group.inventory-asg.name}"
+  }
+
+  alarm_description = "This metric monitors ec2 cpu utilization"
+  alarm_actions     = ["${aws_autoscaling_policy.scale-up.arn}"]
+}
+
 resource "aws_route_table" "public" {
   vpc_id = "${aws_vpc.inventory-vpc.id}"
 
