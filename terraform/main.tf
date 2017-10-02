@@ -217,7 +217,7 @@ resource "aws_nat_gateway" "inventory-nat-gw" {
 }
 
 resource "aws_instance" "inventory-web" {
-  ami =   "ami-d24654b6"
+  ami =   "ami-d16f7db5"
   instance_type = "t2.micro"
   subnet_id = "${aws_subnet.inventory-web.id}"
   vpc_security_group_ids = ["${aws_security_group.inventory-sg-app.id}"]
