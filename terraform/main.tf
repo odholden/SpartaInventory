@@ -94,7 +94,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu-high" {
 
 resource "aws_cloudwatch_metric_alarm" "cpu-low" {
   alarm_name          = "cpu-low"
-  comparison_operator = "LessThan"
+  comparison_operator = "LessThanThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
   namespace           = "AWS/EC2"
