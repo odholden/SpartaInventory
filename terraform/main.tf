@@ -295,14 +295,16 @@ resource "random_string" "password" {
   length = 16
   special = false
 }
+
 resource "aws_db_subnet_group" "inventory-db-group" {
-  name = "main"
+  name = "db-subnet-group"
   subnet_ids = ["${aws_subnet.inventory-db-a.id}", "${aws_subnet.inventory-db-b.id}"]
 
   tags {
     Name = "DB-SUBNET-GROUP"
   }
 }
+
 resource "aws_db_instance" "inventory-db" {
   engine               = "postgres"
   instance_class =  "db.t2.micro"
