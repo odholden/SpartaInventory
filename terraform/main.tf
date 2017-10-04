@@ -53,7 +53,7 @@ resource "aws_autoscaling_group" "inventory-asg" {
   load_balancers = ["${aws_elb.elb.id}"]
   name = "inventory-scalegroup"
   min_size = 1
-  max_size = 5
+  max_size = 2
   desired_capacity = 1
   vpc_zone_identifier = ["${aws_subnet.inventory-web.id}"]
   launch_configuration = "${aws_launch_configuration.asg-config.id}"
@@ -82,7 +82,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu-high" {
   namespace           = "AWS/EC2"
   period              = "120"
   statistic           = "Average"
-  threshold           = "80"
+  threshold           = "100"
 
   dimensions {
     AutoScalingGroupName = "${aws_autoscaling_group.inventory-asg.name}"
@@ -100,7 +100,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu-low" {
   namespace           = "AWS/EC2"
   period              = "120"
   statistic           = "Average"
-  threshold           = "80"
+  threshold           = "100"
 
   dimensions {
     AutoScalingGroupName = "${aws_autoscaling_group.inventory-asg.name}"
