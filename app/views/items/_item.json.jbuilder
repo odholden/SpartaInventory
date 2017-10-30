@@ -1,4 +1,4 @@
-json.extract! item, :id, :description, :logs , :created_at, :updated_at
+json.extract! item, :id, :description, :logs , :academy, :created_at, :updated_at
 
 if item.current != nil
   json.current do
