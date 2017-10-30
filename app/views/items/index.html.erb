@@ -22,23 +22,37 @@
                 <tr>
                   <th>Item id</th>
                   <th>Description</th>
+                  <th>Academy</th>
                   <th>Status</th>
+                  <th>Lender</th>
+                  <th>Borrower</th>
+                  <th>Due Date</th>
                   <th>Actions</th>
                 </tr>
              </thead>
             <% @items.each do |item| %>
-            <tr>
-              <th><%= item.id %></th> 
-              <th><a href="<%= edit_item_path item %>"><%= item.description %></a></th>   
-              <% if item.current %>
-                <th class="checked-out">
-                  <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %></th>
-              <% else %>
-                <th class="available">Available</th>
-              <% end %>
-                <th><%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></th>
-            </tr>
-             <%end%>
+              <tr>
+                <td><%= item.id %></td> 
+                <td><a href="<%= edit_item_path item %>"><%= item.description %></a></td>
+                <td><%= item.academy.try(:name) %></td>
+              
+                <% if item.current %>
+                  <td class="checked-out">
+                    <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %>    
+                  </td> 
+                  <td><%= item.current.lender.name %></td>
+                  <td><%= item.current.borrower.name %></td>
+                  <td class="<%= item.current.due_date.to_date < @date.to_date ? '' : 'due' %>">
+                    <%= item.current.due_date%>
+                  </td>
+                <% else %>
+                  <td colspan = "4" class="available">Available</td>
+                <% end %>
+                <td>
+                  <%= link_to 'delete', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <%end%>
           </table>
     </div>
   </div>

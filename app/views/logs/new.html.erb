@@ -3,7 +3,6 @@
     <div class="col-xs-12">
       <h1>Checkout an item</h1>
          <form class="" action="<%= logs_path %>" method="POST">
-
             <div class="form-group">
               <label for="item_id">Choose an item</label>
             	<select name="log[item_id]" class="form-control">
@@ -14,7 +13,6 @@
             	  <%end%>
             	</select>
             </div>
-
             <div class="form-group">
               <label for="borrower_id">Borrower</label>
               <select name="log[borrower_id]" class="form-control">
@@ -23,14 +21,15 @@
                 <%end%>
               </select>
             </div>
-
+            <div>
+              <label>Due Date</label>
+              <input class="form-control" type="date" name="log[due_date]" data-date-format="yyyy-mm-dd" value="<%=@tomorrow%>">
+            </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary largeBtn" value="Checkout">
             </div>
-
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       </form>
-
     </div>
   </div>
 </div>
