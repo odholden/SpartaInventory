@@ -94,8 +94,8 @@ class ItemsController < ApplicationController
     def populate_item item 
 
       if item.current
-        item.current.lender = User.find item.logs.last.lender_id
-        item.current.borrower = User.find item.logs.last.borrower_id
+        item.current.lender = User.find item.current.lender_id
+        item.current.borrower = User.find item.current.borrower_id
       end
 
       return item
