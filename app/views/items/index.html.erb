@@ -40,8 +40,8 @@
                   <td class="checked-out">
                     <%= link_to "Check-in", checkin_log_path(item.current), data: { confirm: 'Are you sure?' } %>    
                   </td> 
-                  <td><%= item.current.lender.name %></td>
-                  <td><%= item.current.borrower.name %></td>
+                  <td><%= item.current.try(:lender).try(:name) %></td>
+                  <td><%= item.current.try(:borrower).try(:name) %></td>
                   <td class="<%= item.current.due_date.to_date < @date.to_date ? '' : 'due' %>">
                     <%= item.current.due_date%>
                   </td>
