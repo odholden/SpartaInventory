@@ -23,7 +23,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'httparty', '~> 0.13.7'
-
+gem 'newrelic_rpm'
 
 
 #############################
