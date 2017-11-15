@@ -12,6 +12,16 @@
 * test username: test@spartaglobal.com
 * password: test123
 
+## Testing instructions
+
+This app uses the following for testing: 
+
+* Rspec for tests and assertions
+* FactoryGirl for mocking database models
+* Faker for creating test data
+
+The testing command is `bundle exec rspec`. You will need to ensure `bundle install` has been run previously to install the above gems for testing.
+
 ## The Task
 
 As a team of 4 developers we were given the task of adding features and fixing bugs for a web application that is currently in use by staff at Sparta Global. 

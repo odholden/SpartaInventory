@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20170906092538) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "employees", force: :cascade do |t|
+    t.date   "dob",                    null: false
+    t.string "first_name", limit: 255, null: false
+    t.string "last_name",  limit: 255, null: false
+    t.string "gender",     limit: 1,   null: false
+    t.date   "start_date",             null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.string   "description"
     t.datetime "created_at",  null: false
