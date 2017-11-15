@@ -1,0 +1,3 @@
+describe Log do
+	
+end

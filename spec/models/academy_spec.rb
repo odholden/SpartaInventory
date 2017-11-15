@@ -1,14 +1,14 @@
 describe Academy do
 
 	it "is invalid without a name" do
-		academy = build(:academy, name: nil)
-		expect(academy).to be_invalid
+		expect(build(:academy, name: nil)).to be_invalid
 	end
 
 	it "is invalid with a duplicate name" do
-		build(:academy, name: "Ollieland").save
+		pending
 		academy = create(:academy, name: "Ollieland")
-		expect(academy).to be_invalid
+		expect(build(:academy, name: "Ollieland")).to be_invalid
+		academy.destroy
 	end
 
 end
