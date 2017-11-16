@@ -21,7 +21,7 @@ describe Item do
 	end
 
 	before(:all) do
-		@academy = create(:academy, id:1)
+		@academy = create(:academy, id: 1)
 	end
 
 	after(:all) do

@@ -1,9 +1,12 @@
 require 'factory_girl_rails'
 require 'faker'
+require 'httparty'
+require_relative './support/identity_helper'
 
 RSpec.configure do |config|
   # Include FactoryGirl methods into rspec files. This allows very simple mockng/stubbing for rails models to aid in testing and reduce ActiveRecord testing problems.
   # Recommended for use in mocking/stubbing throughout the application
+  config.include IdentityHelper
   config.include FactoryGirl::Syntax::Methods
 
   config.expect_with :rspec do |expectations|

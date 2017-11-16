@@ -19,8 +19,14 @@ This app uses the following for testing:
 * Rspec for tests and assertions
 * FactoryGirl for mocking database models
 * Faker for creating test data
+* HTTParty for requesting
 
-The testing command is `bundle exec rspec`. You will need to ensure `bundle install` has been run previously to install the above gems for testing.
+In order to fully and correctly test the User model class, you must set the following environment variables: 
+
+* IDENTITY_ADMIN_EMAIL - A valid email for an admin user saved in the Identity service
+* IDENTITY_ADMIN_PASSWORD - The associated password for that admin user
+
+The testing command is `rake spec`. You will need to ensure `bundle install` has been run previously to install the above gems for testing.
 
 ## The Task
 

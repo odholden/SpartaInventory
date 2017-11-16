@@ -38,7 +38,6 @@ class User
     response = User.get("/identities/#{id}",
       :headers => { "Authorization" => "Bearer #{@@token}"}
     )
-
     case response.code
       when 200
         return self.bind response.parsed_response

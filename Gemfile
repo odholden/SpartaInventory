@@ -70,6 +70,8 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "faker"
+  gem "jwt"
+  gem 'httparty', '~> 0.13.7'
 end
 
 group :development do
