@@ -43,12 +43,5 @@ ActiveRecord::Schema.define(version: 20170906092538) do
     t.index ["lender_id"], name: "index_logs_on_lender_id", using: :btree
   end
 
-  create_table "video", force: :cascade do |t|
-    t.string "title"
-    t.text   "description"
-    t.text   "url"
-    t.string "genre"
-  end
-
   add_foreign_key "logs", "items"
 end
