@@ -24,3 +24,4 @@ v3.0/
 /log/*.log
 /tmp
 /.idea/
+/Gemfile.lock
