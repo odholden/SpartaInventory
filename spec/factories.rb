@@ -24,7 +24,7 @@ class IdentityFactory
 	include HTTParty
 	base_uri "http://identity.spartaglobal.academy/"
 
-	def self.get_token email, password
+	def self.get_token(email, password)
 		response = post("/tokens", 
 			body: {
 				email: email,
@@ -38,5 +38,19 @@ class IdentityFactory
 		if response.success?
 			JSON.parse(response.body)["token"]
 		end
+	end
+
+	def self.get_all_users(email, password)
+		token = self.get_token(email, password)
+		self.get("/identities", {
+			headers: { "Authorization" => "Bearer #{token}" }
+		}).parsed_response
+	end
+
+	def self.get_one_user(email, password, id)
+		token = self.get_token(email, password)
+		self.get("/identities/#{id}", {
+			headers: { "Authorization" => "Bearer #{token}" }
+		}).parsed_response
 	end
 end
