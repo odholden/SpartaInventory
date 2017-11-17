@@ -10,7 +10,7 @@
 * Start rails server
 * Within the internet browser type http://development.local:3000/
 * test username: test@spartaglobal.com
-* password: test123
+* password: spartatest
 
 ## The Task
 
