@@ -24,3 +24,6 @@ v3.0/
 /log/*.log
 /tmp
 
+# Ignore extras
+Gemfile.lock
+/db/schema.rb

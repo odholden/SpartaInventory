@@ -53,7 +53,6 @@ class User
     response = User.get("/identities/roles/#{role}",
       :headers => { "Authorization" => "Bearer #{@@token}"}
     )
-    puts "Bearer #{@@token}"
     case response.code
       when 200
         return self.bind_array response.parsed_response

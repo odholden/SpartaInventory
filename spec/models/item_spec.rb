@@ -9,12 +9,12 @@ describe Item do
 	end
 
 	it "is invalid without a serial" do
-		pending
+		pending "Item model validation"
 		expect(build(:item, serial: nil)).to be_invalid
 	end
 
 	it "is invalid with a duplicate serial" do
-		pending
+		pending "Item model validation"
 		item = create(:item, serial: "NOTE_8")
 		expect(build(:item, serial: "NOTE_8")).to be_invalid
 		item.destroy

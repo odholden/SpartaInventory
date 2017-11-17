@@ -5,7 +5,7 @@ describe Academy do
 	end
 
 	it "is invalid with a duplicate name" do
-		pending
+		pending "Academy model validation"
 		academy = create(:academy, name: "Ollieland")
 		expect(build(:academy, name: "Ollieland")).to be_invalid
 		academy.destroy

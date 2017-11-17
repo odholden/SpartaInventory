@@ -5,12 +5,12 @@ describe Log do
 	end
 
 	it "is invalid without a borrower" do
-		pending
+		pending "Log model validation"
 		expect(build(:log, borrower_id: nil)).to be_invalid
 	end
 
 	it "is invalid without a lender" do
-		pending
+		pending "Log model validation"
 		expect(build(:log, lender_id: nil)).to be_invalid
 	end
 
