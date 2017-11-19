@@ -1,16 +1,20 @@
-Given("that I am on the create/edit item page") do
+Given("that I have checked out an item") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-When("I select an academy from a list of those available") do
+And("the item has not been returned") do
+  pending # Write code here that turns the phrase above into concrete actions
+
+end
+
+And("that I have set a date for its return") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-And("I save the record") do
+When("that date is reached") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then("I expect the record to be associated with that academy") do
-
+Then("I expect the lender to receive a notification") do
   pending # Write code here that turns the phrase above into concrete actions
 end
