@@ -1,4 +1,4 @@
-Feature: view items
+Feature: View items
 As a user
 I should be able to see the lender and borrower on the items page so I can see easily if an item is available
 

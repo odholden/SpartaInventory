@@ -1,6 +1,6 @@
-Feature: overdue items
+Feature: Overdue items
 As an admin
- should be able to see which items are overdue in the list of items so that I can quickly asses who needs to be contacted
+I should be able to see which items are overdue in the list of items so that I can quickly asses who needs to be contacted
 
 @overdue_items
 Scenario: If I am an admin I can see overdue items
