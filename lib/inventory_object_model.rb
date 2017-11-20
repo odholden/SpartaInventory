@@ -2,4 +2,5 @@
 
 class InventoryApp
 # this is the superclass. This will contain sub classes that contain methods that navigate the pages.
+
 end
