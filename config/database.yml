@@ -101,3 +101,6 @@ production:
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   encoding: unicode
   port: 5432
+
+cucumber:
+  <<: *test
