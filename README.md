@@ -2,18 +2,7 @@
 
 ## Installation
 
-* Install VirtualBox, Vagrant and Chef
-* Run vagrant up to create VM for development
-* Start vagrant ssh app 
-* cd into app/
-* Run bundle install and rails install
-* Start rails server
-* Within the internet browser type http://development.local:3000/
-* test username: test@spartaglobal.com
-* password: spartatest
-
 ### Install VirtualBox, Vagrant and Chef
-
 
 The easiest way to get this project running is by using Vagrant. Vagrant starts and controls virtual machines for you using VirtualBox. This project has been setup to create two virtual machines in a 2 tier structure. One for the app and another for the database. It will install all the necessary sofware on both. To use this setup you need to install VirtualBox, Vagrant and Chef for your machine.
 
