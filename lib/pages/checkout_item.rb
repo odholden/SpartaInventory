@@ -4,7 +4,7 @@ require 'capybara/dsl'
 class CheckoutItem
   include Capybara::DSL
 
-  URL ||= 'http://development.local:3000/'
+  URL ||= 'http://localhost:3000/'
   CHOOSE_ITEM ||= '/html/body/div[2]/div/div/form/div[1]/select'
   BORROWER ||= '/html/body/div[2]/div/div/form/div[2]/select'
   DUE_DATE ||= '/html/body/div[2]/div/div/form/div[3]/input'

@@ -3,7 +3,7 @@ require 'capybara/dsl'
 class CreateItem
   include Capybara::DSL
 
-  URL = 'http://development.local:3000/'
+  URL = 'http://localhost:3000/'
   DESCRIPTION ||= '//*[@id=“item_description"]'
   SERIAL_FIELD ||= '//*[@id=“item_serial"]'
   ACADEMY_DROPDOWN ||= '//*[@id=“item_academy_id"]'

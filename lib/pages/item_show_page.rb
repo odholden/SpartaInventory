@@ -4,7 +4,7 @@ require 'capybara/dsl'
 class ItemShowPage
   include Capybara::DSL
 
-  URL = 'http://development.local:3000/'
+  URL = 'http://localhost:3000/'
   BACK_BUTTON ||= '/html/body/div[2]/div/div/a'
 
   def visit_page
