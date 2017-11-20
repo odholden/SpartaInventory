@@ -101,10 +101,15 @@ This will dump the contents of the virtual machine memory to a file which can be
 
 The app requires that you log in. You must have a Sparta Identity account to log in to the system. 
 
-Ask and administrator to create a test account for you to use.
+Ask an administrator to create a test account for you to use on the IMC
 
 ## Useful information
 
-The app virtual machine can b
+Vagrant sets up two fake urls that point to the various virtual machines.
+
+The app virtual machine can be accessed from the host at development.local
+The db virtual machine can be accessed at database.local
+
+
 
 
