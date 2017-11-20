@@ -1,4 +1,5 @@
 require 'capybara/dsl'
+# require 'cucumber'
 
 class CheckoutItem
   include Capybara::DSL
@@ -29,7 +30,3 @@ class CheckoutItem
     find(:xpath, CHECKOUT)
   end
 end
-
-x = CheckoutItem.new
-
-x.visit_page

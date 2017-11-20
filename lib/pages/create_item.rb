@@ -29,7 +29,3 @@ class CreateItem
     find(:xpath, SAVE_ITEM_BUTTON)
   end
 end
-
-x = CheckoutItem.new
-
-x.visit_page

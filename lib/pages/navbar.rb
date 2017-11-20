@@ -73,7 +73,3 @@ class Navbar
   end
 
 end
-
-x = Navbar.new
-x.visit_root_page
-x.click_account_navbar_link

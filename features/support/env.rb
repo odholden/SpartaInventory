@@ -6,10 +6,10 @@
 
 require 'cucumber/rails'
 require 'capybara/cucumber'
+require_relative '../../lib/inventory_object_model'
+require 'selenium-webdriver'
 
-Capybara.app = MyRackApp
-
-Capybara.server = :puma 
+Capybara.server = :puma
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
@@ -69,3 +69,5 @@ Capybara.configure do |config|
   config.default_max_wait_time = 5
   config.default_driver = :chrome
 end
+
+World(InventoryApp)
