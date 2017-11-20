@@ -62,16 +62,15 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
+test: &test
   <<: *default
-  database: <%= ENV['DATABASE_NAME'] %>
+  database: test_inventory
   adapter: postgresql
-  host: <%= ENV['HOST_URL'] %>
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  host: 192.168.10.150
+  username: postgres
+  password: 'password'
   encoding: unicode
   pool: 5
-  port: 5432
 
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -102,3 +101,6 @@ production:
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   encoding: unicode
   port: 5432
+
+cucumber:
+  <<: *test

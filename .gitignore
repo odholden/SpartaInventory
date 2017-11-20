@@ -23,4 +23,5 @@ v3.0/
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
+/.idea/
+/Gemfile.lock
