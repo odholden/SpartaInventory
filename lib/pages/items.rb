@@ -1,7 +1,7 @@
 
 require 'capybara/dsl'
 
-class CheckoutItem
+class Item
   include Capybara::DSL
 
   URL ||= 'http://localhost:3000/'
