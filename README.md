@@ -6,8 +6,9 @@
 
 The easiest way to get this project running is by using Vagrant. Vagrant starts and controls virtual machines for you using VirtualBox. This project has been setup to create two virtual machines in a 2 tier structure. One for the app and another for the database. It will install all the necessary sofware on both. To use this setup you need to install VirtualBox, Vagrant and Chef for your machine.
 
-[https://www.vagrantup.com/downloads.html](Vagrant)
-[https://www.virtualbox.org/wiki/Downloads](VirtualBox)
+[Vagrant](https://www.vagrantup.com/downloads.html)
+
+[VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 Chef is most easily installed from the command line:
 
