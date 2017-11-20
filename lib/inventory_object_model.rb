@@ -17,4 +17,40 @@ module InventoryApp
       CheckoutItem.new
     end
 
+    def create_item
+      CreateItem.new
+    end
+
+    def item_show_page
+      ItemShowPage.new
+    end
+
+    def items
+      Item.new
+    end
+
+    def checkout_item
+      CheckoutItem.new
+    end
+
+    def login_page
+      Login.new
+    end
+
+    def logs_show_page
+      LogsShowPage.new
+    end
+
+    def logs
+      Logs.new
+    end
+
+    def navbar
+      Navbar.new
+    end
+
+    def new_academy
+      NewAcademy.new
+    end
+
 end

@@ -2,7 +2,7 @@ Feature: Item usage
 
   Scenario: As a user I should be able to see the items
     Given I am already logged in
-    When I click on the items link
+    When I click on the items link 
     Then I am taken to the items page
     And I can see all of the items in the database
 
