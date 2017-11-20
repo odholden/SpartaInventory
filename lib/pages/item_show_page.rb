@@ -12,7 +12,7 @@ class ItemShowPage
   end
 
   def back_button
-    find(BACK_BUTTON)
+    find(:xpath, BACK_BUTTON)
   end
 
 end

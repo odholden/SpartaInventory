@@ -14,19 +14,19 @@ class CheckoutItem
   end
 
   def choose_item
-    find(CHOOSE_ITEM)
+    find(:xpath, CHOOSE_ITEM)
   end
 
   def burrower
-    find(BURROWER)
+    find(:xpath, BURROWER)
   end
 
   def due_date
-    find(DUE_DATE)
+    find(:xpath, DUE_DATE)
   end
 
   def checkout
-    find(CHECKOUT)
+    find(:xpath, CHECKOUT)
   end
 end
 

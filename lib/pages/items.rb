@@ -14,14 +14,14 @@ class CheckoutItem
   end
 
   def add_new_item_button
-    visit(ADD_NEW_ITEM_BUTTON)
+    find(:xpath, ADD_NEW_ITEM_BUTTON)
   end
 
   def description_link
-    find(DESCRIPTION_LINK)
+    find(:xpath, DESCRIPTION_LINK)
   end
 
   def delete_item_link
-    find(DELETE_ITEM_LINK)
+    find(:xpath, DELETE_ITEM_LINK)
   end
 end

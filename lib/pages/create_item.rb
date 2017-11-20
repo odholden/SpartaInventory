@@ -14,19 +14,19 @@ class CreateItem
   end
 
   def description
-    find(DESCRIPTION)
+    find(:xpath, DESCRIPTION)
   end
 
   def serial_field
-    find(SERIAL_FIELD)
+    find(:xpath, SERIAL_FIELD)
   end
 
   def academy_dropdown
-    find(ACADEMY_DROPDOWN)
+    find(:xpath, ACADEMY_DROPDOWN)
   end
 
   def save_item_button
-    find(SAVE_ITEM_BUTTON)
+    find(:xpath, SAVE_ITEM_BUTTON)
   end
 end
 
