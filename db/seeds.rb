@@ -126,10 +126,10 @@
 # user2 = User.create({user_name:'Anna'})
 # user3 = User.create({user_name:'Jhon'})
 
- item = Item.create({item_model:'Macbook 2010', item_serial_number:'DFRUY3TGV333'})
- item1 = Item.create({item_model:'Macbook 2011', item_serial_number:'LOPUY3TG111'})
- item2 = Item.create({item_model:'Macbook 2012', item_serial_number:'GHTJUY90K000'})
- item3 = Item.create({item_model:'Macbook 2013', item_serial_number:'ASDJUY90K777'})
+ item = Item.create({description:'Macbook 2010', serial:'DFRUY3TGV333', created_at: '04/06/2017', updated_at: '05/06/2017'})
+ item1 = Item.create({description:'Macbook 2011', serial:'LOPUY3TG111', created_at: '10/10/2017', updated_at: '18/11/2017'})
+ item2 = Item.create({description:'Macbook 2012', serial:'GHTJUY90K000', created_at: '08/10/2017', updated_at: '20/11/2017'})
+ item3 = Item.create({description:'Macbook 2013', serial:'ASDJUY90K777', created_at: '07/10/2017', updated_at: '19/11/2017'})
 
 # log = Log.create({item_id:item.id, user_id:user.id, given_to:user.id, returner_id:user2.id, date_taken:'01/03/2017', date_returned:'11/03/2017' })
 # log2 = Log.create({item_id:item2.id, user_id:user2.id, given_to:user.id , returner_id:user.id, date_taken:'01/03/2017', date_returned:'11/03/2017' })
