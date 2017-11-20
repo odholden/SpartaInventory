@@ -6,16 +6,15 @@ When("I enter in the required fields") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-When("I submit the credentials") do
+And("I submit the credentials") do
   pending # Write code here that turns the phrase above into concrete actions
 end
-
 
 Then("I am taken to the logs page") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then("I have access to restricted resources") do
+And("I have access to restricted resources") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
@@ -27,11 +26,7 @@ Then("I am returned to the login page") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then("an error message is displayed") do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Given("I am already logged in") do
+And("an error message is displayed") do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
@@ -40,6 +35,5 @@ When("I click the logout button") do
 end
 
 Then("I am taken to the login page") do
-
   pending # Write code here that turns the phrase above into concrete actions
 end
